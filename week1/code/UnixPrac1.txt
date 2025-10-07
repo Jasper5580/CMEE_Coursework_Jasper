@@ -1,0 +1,13 @@
+
+wc -l ../data/fasta/*.fasta  
+tail -n +2 ../data/fasta/E.coli.fasta
+tail -n +2 ../data/fasta/E.coli.fasta | tr -d '\n' | wc -m
+tail -n +2 ../data/fasta/E.coli.fasta | tr -d '\n' | grep -o "ATGC" | wc -l
+
+tail -n +2 ../data/fasta/E.coli.fasta | tr -d '\n' | awk '{
+  a=gsub(/A/,"");
+  t=gsub(/T/,"");
+  g=gsub(/G/,"");
+  c=gsub(/C/,"");
+  print (a+t)/(g+c)
+}'
