@@ -8,6 +8,7 @@ week1/
 │ ├── csvtospace.sh # Converts CSV files to space-separated files
 │ ├── UnixPrac1.txt # Written answers or notes for UNIX practice questions
 │ ├── image1.tif, image2.tif # Test image files used for tiff2png.sh
+│ ├── test.txt # Input for tabtocsv.sh
 │
 ├── data/ # Folder for data files used in exercises
 │ └── fasta/
