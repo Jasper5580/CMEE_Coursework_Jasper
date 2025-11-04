@@ -1,0 +1,1588 @@
+======================================================================
+AUTOMATED FEEDBACK LOG
+======================================================================
+
+HOW TO READ THIS FEEDBACK:
+--------------------------
+1. This log contains detailed feedback on your code execution
+2. Each script is tested and results are shown with output and errors
+3. IMPORTANT: Read all the way to the END for a summary and debugging guidance
+4. The summary at the end will help you understand and fix any issues
+5. Scripts are run in a headless environment (no GUI applications)
+
+======================================================================
+
+Starting testing for Yian Liu
+
+Processing all weeks found in repository
+
+Your current Git repo size is about 1.40 MiB on disk
+
+Found directories: .git, week1, week4, week2, Feedback
+Found files: .gitignore, README.md
+
+Processing all weeks: week1, week4, week2
+
+Found 28 code files to test.
+
+Note: Expected file checking not performed (no FileList provided).
+Expected file checking will only be performed during final assessment.
+
+======================================================================
+Script: csvtospace.sh
+
+Contents:
+
+**********
+#/bin/bash
+# Author: Yian.Liu25@imperial.ac.uk
+# Script: tabtocsv.sh
+# Date: Oct 2025
+
+# Check if the user gave an input file name
+if [ $# -lt 1 ]; then
+  echo "bash csvtospace.sh"
+  exit 1
+fi
+
+# Save the first argument (the file name) in a variable
+infile="$1"
+
+# Check if the file exists
+if [ ! -f "$infile" ]; then
+  echo "Error: file not found: $infile"
+  exit 1
+fi
+
+outfile="${infile}_space.txt"
+
+# Use 'tr' to replace commas with spaces
+echo "Changing commas to spaces in $infile ..."
+tr ',' ' ' < "$infile" > "$outfile"
+
+echo "Done! Created file: $outfile"
+**********
+
+Output (first 500 chars):
+
+**********
+bash csvtospace.sh
+
+**********
+No errors.
+======================================================================
+Script: tiff2png.sh
+
+Contents:
+
+**********
+#!/bin/bash
+for f in *.tif;
+do
+  echo "Converting $f"
+  convert "$f" "$(basename "$f" .tif).png"
+done
+
+**********
+
+Output (first 500 chars):
+
+**********
+Converting image1.tif
+Converting image2.tif
+
+**********
+No errors.
+======================================================================
+Script: Countlines.sh
+
+Contents:
+
+**********
+#!/bin/bash
+NumLines=`wc -l < $1`
+echo "The file $1 has $NumLines lines"
+echo
+
+**********
+
+Output (first 500 chars):
+
+**********
+The file  has  lines
+
+
+**********
+Errors:
+**********
+Countlines.sh: line 2: $1: ambiguous redirect
+
+**********
+======================================================================
+Script: boilerplate.sh
+
+Contents:
+
+**********
+#!/bin/sh
+# Author: Yian.Liu Yian.Liu25@imperial.ac.uk
+# Script: boilerplate.sh
+# Desc: simple boilerplate for shell scripts
+# Arguments: none
+# Date: Oct 2025
+
+echo -e "\nThis is a shell script! \n"
+
+**********
+
+Output (first 500 chars):
+
+**********
+
+This is a shell script! 
+
+
+**********
+No errors.
+======================================================================
+Script: ConcatenateTwoFiles.sh
+
+Contents:
+
+**********
+#!/bin/bash
+cat $1 > $3
+cat $2 >> $3
+echo "Merged File is:"
+cat $3
+
+**********
+
+Output (first 500 chars):
+
+**********
+Merged File is:
+
+**********
+Errors:
+**********
+ConcatenateTwoFiles.sh: line 2: $3: ambiguous redirect
+ConcatenateTwoFiles.sh: line 3: $3: ambiguous redirect
+
+**********
+======================================================================
+Script: tabtocsv.sh
+
+Contents:
+
+**********
+#!/bin/sh
+# Author: Yian.Liu25@imperial.ac.uk
+# Script: tabtocsv.sh
+# Date: Oct 2025
+# Check if the user gave an input file name
+if [ $# -lt 1 ]; then
+  echo "bash tabtocsv.sh"
+  exit 1
+fi
+
+# Save the first argument (the file name) in a variable
+infile="$1"
+
+# Check if the file really exists
+if [ ! -f "$infile" ]; then
+  echo "Error: file not found: $infile"
+  exit 1
+fi
+
+# Use 'tr' to replace TABs with commas and save to a new file
+echo "Changing TABs to commas in $infile ..."
+tr '\t' ',' < "$infile" > "$infile.csv"
+
+echo "Done! Created file: $infile.csv"
+
+**********
+
+Output (first 500 chars):
+
+**********
+bash tabtocsv.sh
+
+**********
+No errors.
+======================================================================
+Script: PP_Regress.R
+
+Contents:
+
+**********
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+})
+
+infile  <- file.path("..", "data", "EcolArchives-E089-51-D1.csv")
+out_pdf <- file.path("..", "results", "PP_Regress.pdf")
+out_csv <- file.path("..", "results", "PP_Regress_Results.csv")
+
+if (!dir.exists(file.path("..", "results"))) dir.create(file.path("..", "results"), recursive = TRUE)
+
+d <- read.csv(infile, stringsAsFactors = FALSE)
+
+dat <- d %>%
+  mutate(
+    # Standardize units: mg -> g
+    Prey.mass.g = ifelse(Prey.mass.unit == "mg", Prey.mass / 1000, Prey.mass),
+    Feeding.type = Type.of.feeding.interaction,
+    Lifestage    = gsub("\\s*/\\s*", "/", Predator.lifestage)  # 去掉“larva / juvenile”中的空格，便于图例整洁
+  ) %>%
+  select(Feeding.type, Lifestage, Predator.mass, Prey.mass.g) %>%
+  filter(!is.na(Feeding.type), !is.na(Lifestage),
+         !is.na(Predator.mass), !is.na(Prey.mass.g)) %>%
+  mutate(
+    logPred = log10(Predator.mass),
+    logPrey = log10(Prey.mass.g),
+    Feeding.type = factor(
+      Feeding.type,
+      levels = c("insectivorous", "piscivorous", "planktivorous", "predacious", "predacious/piscivorous")
+    )
+  )
+
+# Draw and write to PDF
+p <- ggplot(dat, aes(x = Prey.mass.g, y = Predator.mass,
+                     colour = Lifestage, fill = Lifestage)) +
+  geom_point(alpha = 0.5, size = 1) +
+  geom_smooth(method = "lm", se = TRUE, size = 0.6) +
+  scale_x_log10() +
+  scale_y_log10() +
+  facet_grid(Feeding.type ~ .) +
+  labs(x = "Prey Mass in grams", y = "Predator mass in grams") +
+  theme_bw(base_size = 11) +
+  theme(legend.position = "bottom",
+        strip.background = element_rect(colour = NA, fill = "grey90"))
+
+pdf(out_pdf, width = 7, height = 10)
+print(p) 
+dev.off()
+
+## Model： log10(Predator.mass) ~ log10(Prey.mass.g)
+regress_results <- dat %>%
+  group_by(Feeding.type, Lifestage) %>%
+  do({
+    dd <- .
+    n  <- nrow(dd)
+
+    # If there are too few data points (<3) or the independent variable has insufficient values ​​(<2 distinct x), then NA is given.
+    if (n < 3 || dplyr::n_distinct(dd$logPrey) < 2) {
+      data.frame(n = n, intercept = NA_real_, slope = NA_real_,
+                 r.squared = NA_real_, f.statistic = NA_real_,
+                 df1 = NA_integer_, df2 = NA_integer_, p.value = NA_real_)
+    } else {
+      fit <- lm(logPred ~ logPrey, data = dd)
+      s   <- summary(fit)
+      f   <- unname(s$fstatistic)
+      pv  <- if (length(f) == 3) pf(f[1], f[2], f[3], lower.tail = FALSE) else NA_real_
+      co  <- coef(s)
+
+      data.frame(
+        n          = n,
+        intercept  = unname(co["(Intercept)", "Estimate"]),
+        slope      = unname(co["logPrey"   , "Estimate"]),
+        r.squared  = unname(s$r.squared),
+        f.statistic= if (length(f) >= 1) f[1] else NA_real_,
+        df1        = if (length(f) >= 2) f[2] else NA_integer_,
+        df2        = if (length(f) >= 3) f[3] else NA_integer_,
+        p.value    = pv
+      )
+    }
+  }) %>%
+  arrange(Feeding.type, Lifestage)
+
+write.csv(regress_results, out_csv, row.names = FALSE)
+
+cat("\nDone.\n",
+    "Figure  : ", out_pdf, "\n",
+    "Results : ", out_csv, "\n", sep = "")
+
+**********
+
+Output (first 500 chars):
+
+**********
+null device 
+          1 
+
+Done.
+Figure  : ../results/PP_Regress.pdf
+Results : ../results/PP_Regress_Results.csv
+
+**********
+Errors:
+**********
+Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead. 
+`geom_smooth()` using formula = 'y ~ x'
+Warning messages:
+1: In qt((1 - level)/2, df) : NaNs produced
+2: In max(ids, na.rm = TRUE) :
+  no non-missing arguments to max; returning -Inf
+
+**********
+======================================================================
+Script: Florida.R
+
+Contents:
+
+**********
+set.seed(1)
+
+# 1.
+cand_paths <- c("data/KeyWestAnnualMeanTemperature.RData",
+                "../data/KeyWestAnnualMeanTemperature.RData")
+data_path <- cand_paths[file.exists(cand_paths)][1]
+if (is.na(data_path)) stop("can`t find the file")
+
+# 2. output dir（results/figs）
+out_root <- if (dir.exists("results")) "results" else "../results"
+fig_dir  <- file.path(out_root, "figs")
+dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
+
+# 3.
+load(data_path)
+class(ats); head(ats)
+
+# 4.Scatter plot
+png(file.path(fig_dir, "scatter_year_temp.png"), width = 900, height = 650)
+plot(ats$Year, ats$Temp,
+     xlab = "Year", ylab = "Temp (°C)",
+     main = "Key West annual mean temperature")
+dev.off()
+
+# 5.correlation
+r_obs <- cor(ats$Year, ats$Temp)
+r_obs
+
+# 6.Displacement test
+B <- 10000
+rand_r <- numeric(B)
+for (i in 1:B) rand_r[i] <- cor(ats$Year, sample(ats$Temp))
+
+# 7.One-sided p-value
+p_val <- mean(rand_r >= r_obs)
+p_val
+
+# 8.
+png(file.path(fig_dir, "permutation_correlations.png"), width = 900, height = 650)
+hist(rand_r, breaks = 50,
+     main = "Permutation distribution of r",
+     xlab = "Correlation (Year vs. shuffled Temp)")
+abline(v = r_obs, col = "red", lwd = 2)
+legend("topleft",
+       legend = paste0("Observed r = ", round(r_obs, 3),
+                       "\nOne-sided p = ", signif(p_val, 3)),
+       bty = "n")
+dev.off()
+
+cat("\nObserved r =", round(r_obs, 3),
+    "| One-sided permutation p =", signif(p_val, 3), "\n")
+if (p_val < 0.05 && r_obs > 0) {
+  cat("Conclusion: key west is on warmer。\n")
+} else {
+  cat("Conclusion: No upward trend。\n")
+}
+
+vals_tex <- file.path(out_root, "values.tex")
+cat(sprintf("\\newcommand{\\robserved}{%.3f}\n\\newcommand{\\pvalue}{%.3g}\n",
+            r_obs, p_val),
+    file = vals_tex)
+**********
+
+Output (first 500 chars):
+
+**********
+[1] "data.frame"
+  Year     Temp
+1 1901 23.75000
+2 1902 24.66667
+3 1903 24.71667
+4 1904 24.51667
+5 1905 24.88333
+6 1906 24.63333
+null device 
+          1 
+[1] 0.5331784
+[1] 0
+null device 
+          1 
+
+Observed r = 0.533 | One-sided permutation p = 0 
+Conclusion: key west is on warmer。
+
+**********
+No errors.
+======================================================================
+Script: TreeHeight.R
+
+Contents:
+
+**********
+#!/usr/bin/env Rscript
+# TreeHeight.R
+
+data_path   <- "../data/trees.csv"
+output_path <- "../results/TreeHts.csv"
+
+df <- read.csv(data_path, stringsAsFactors = FALSE, check.names = FALSE)
+
+# Calculation: Height = Distance * tan(Angle (degrees) * pi / 180)
+df$Tree_Height_m <- df$`Distance.m` * tan(df$`Angle.degrees` * pi / 180)
+
+write.csv(df, output_path, row.names = FALSE)
+**********
+
+Output (first 500 chars):
+
+**********
+
+**********
+No errors.
+======================================================================
+Script: MyExampleScript.py
+
+Contents:
+
+**********
+
+def foo(x):
+    x *= x # same as x = x*x
+    print(x)
+
+foo(2)
+**********
+
+Output (first 500 chars):
+
+**********
+4
+
+**********
+No errors.
+======================================================================
+Script: lc2.py
+
+Contents:
+
+**********
+# Average UK Rainfall (mm) for 1910 by month
+# http://www.metoffice.gov.uk/climate/uk/datasets
+rainfall = (('JAN',111.4),
+            ('FEB',126.1),
+            ('MAR', 49.9),
+            ('APR', 95.3),
+            ('MAY', 71.8),
+            ('JUN', 70.2),
+            ('JUL', 97.1),
+            ('AUG',140.2),
+            ('SEP', 27.0),
+            ('OCT', 89.4),
+            ('NOV',128.4),
+            ('DEC',142.2),
+           )
+
+# (1) Use a list comprehension to create a list of month,rainfall tuples where
+# the amount of rain was greater than 100 mm.
+ 
+over_100_comp = [(m,v) for (m,v) in rainfall if v>100]
+print(" >100mm:", over_100_comp)
+
+# (2) Use a list comprehension to create a list of just month names where the
+# amount of rain was less than 50 mm. 
+
+under_50_comp = [m for (m, v) in rainfall if v < 50] 
+print(" <50mm months:", under_50_comp)
+# (3) Now do (1) and (2) using conventional loops (you can choose to do 
+# this before 1 and 2 !). 
+over_100_loop = []
+under_50_loop = []
+
+for m, v in rainfall:
+    if v > 100:
+        over_100_loop.append((m,v))
+    if v < 50:
+        under_50_loop.append(m)
+
+print(" >100mm:", over_100_loop)
+print(" <50mm months:", under_50_loop)
+# A good example output is:
+#
+# Step #1:
+# Months and rainfall values when the amount of rain was greater than 100mm:
+# [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+# ... etc.
+
+
+**********
+
+Output (first 500 chars):
+
+**********
+ >100mm: [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+ <50mm months: ['MAR', 'SEP']
+ >100mm: [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+ <50mm months: ['MAR', 'SEP']
+
+**********
+No errors.
+======================================================================
+Script: oaks.py
+
+Contents:
+
+**********
+## Finds just those taxa that are oak trees from a list of species
+
+taxa = [ 'Quercus robur',
+         'Fraxinus excelsior',
+         'Pinus sylvestris',
+         'Quercus cerris',
+         'Quercus petraea',
+       ]
+
+def is_an_oak(name):
+    return name.lower().startswith('quercus ')
+
+##Using for loops
+oaks_loops = set()
+for species in taxa:
+    if is_an_oak(species):
+        oaks_loops.add(species)
+print(oaks_loops)
+
+##Using list comprehensions   
+oaks_lc = set([species for species in taxa if is_an_oak(species)])
+print(oaks_lc)
+
+##Get names in UPPER CASE using for loops
+oaks_loops = set()
+for species in taxa:
+    if is_an_oak(species):
+        oaks_loops.add(species.upper())
+print(oaks_loops)
+
+##Get names in UPPER CASE using list comprehensions
+oaks_lc = set([species.upper() for species in taxa if is_an_oak(species)])
+print(oaks_lc)
+**********
+
+Output (first 500 chars):
+
+**********
+{'Quercus cerris', 'Quercus robur', 'Quercus petraea'}
+{'Quercus cerris', 'Quercus robur', 'Quercus petraea'}
+{'QUERCUS ROBUR', 'QUERCUS PETRAEA', 'QUERCUS CERRIS'}
+{'QUERCUS ROBUR', 'QUERCUS PETRAEA', 'QUERCUS CERRIS'}
+
+**********
+No errors.
+======================================================================
+Script: dictionary.py
+
+Contents:
+
+**********
+taxa = [ ('Myotis lucifugus','Chiroptera'),
+         ('Gerbillus henleyi','Rodentia',),
+         ('Peromyscus crinitus', 'Rodentia'),
+         ('Mus domesticus', 'Rodentia'),
+         ('Cleithrionomys rutilus', 'Rodentia'),
+         ('Microgale dobsoni', 'Afrosoricida'),
+         ('Microgale talazaci', 'Afrosoricida'),
+         ('Lyacon pictus', 'Carnivora'),
+         ('Arctocephalus gazella', 'Carnivora'),
+         ('Canis lupus', 'Carnivora'),
+        ]
+
+# Write a python script to populate a dictionary called taxa_dic derived from
+# taxa so that it maps order names to sets of taxa and prints it to screen.
+# 
+# An example output is:
+#  
+# 'Chiroptera' : set(['Myotis lucifugus']) ... etc. 
+# OR, 
+# 'Chiroptera': {'Myotis  lucifugus'} ... etc
+
+#### Your solution here #### 
+
+taxa_dic = {}
+
+for species, order in taxa:
+    taxa_dic.setdefault(order, set()).add(species)
+
+print("Loop dict:")
+for order in sorted(taxa_dic):
+    print(f"{order}: {sorted(taxa_dic[order])}")
+
+
+# Now write a list comprehension that does the same (including the printing after the dictionary has been created)  
+ 
+#### Your solution here #### 
+
+orders = {order for _, order in taxa} 
+taxa_dic_comp = {
+    order: {sp for sp, od in taxa if od == order}
+    for order in orders
+}
+
+print("Comprehension dict:")
+for order in sorted(taxa_dic_comp):
+    print(f"{order}: {sorted(taxa_dic_comp[order])}")
+
+**********
+
+Output (first 500 chars):
+
+**********
+Loop dict:
+Afrosoricida: ['Microgale dobsoni', 'Microgale talazaci']
+Carnivora: ['Arctocephalus gazella', 'Canis lupus', 'Lyacon pictus']
+Chiroptera: ['Myotis lucifugus']
+Rodentia: ['Cleithrionomys rutilus', 'Gerbillus henleyi', 'Mus domesticus', 'Peromyscus crinitus']
+Comprehension dict:
+Afrosoricida: ['Microgale dobsoni', 'Microgale talazaci']
+Carnivora: ['Arctocephalus gazella', 'Canis lupus', 'Lyacon pictus']
+Chiroptera: ['Myotis lucifugus']
+Rodentia: ['Cleithrionomys rutilus', 'Gerbillus he
+**********
+No errors.
+======================================================================
+Script: cfexercises2.py
+
+Contents:
+
+**********
+
+########################
+def hello_1(x):
+    for j in range(x):
+        if j % 3 == 0:
+            print('hello')
+    print(' ')
+
+hello_1(12)
+
+########################
+def hello_2(x):
+    for j in range(x):
+        if j % 5 == 3:
+            print('hello')
+        elif j % 4 == 3:
+            print('hello')
+    print(' ')
+
+hello_2(12)
+
+########################
+def hello_3(x, y):
+    for i in range(x, y):
+        print('hello')
+    print(' ')
+
+hello_3(3, 17)
+
+########################
+def hello_4(x):
+    while x != 15:
+        print('hello')
+        x = x + 3
+    print(' ')
+
+hello_4(0)
+
+########################
+def hello_5(x):
+    while x < 100:
+        if x == 31:
+            for k in range(7):
+                print('hello')
+        elif x == 18:
+            print('hello')
+        x = x + 1
+    print(' ')
+
+hello_5(12)
+
+# WHILE loop with BREAK
+def hello_6(x, y):
+    while x: # while x is True
+        print("hello! " + str(y))
+        y += 1 # increment y by 1 
+        if y == 6:
+            break
+    print(' ')
+
+hello_6 (True, 0)
+**********
+
+Output (first 500 chars):
+
+**********
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+ 
+hello! 0
+hello! 1
+hello! 2
+hello! 3
+hello! 4
+hello! 5
+ 
+
+**********
+No errors.
+======================================================================
+Script: basic_io3.py
+
+Contents:
+
+**********
+#############################
+# STORING OBJECTS
+#############################
+# To save an object (even complex) for later use
+my_dictionary = {"a key": 10, "another key": 11}
+
+import pickle
+
+f = open('../sandbox/testp.p','wb')  # 注意二进制写
+pickle.dump(my_dictionary, f)
+f.close()
+
+# 读取回来
+f = open('../sandbox/testp.p','rb')
+another_dictionary = pickle.load(f)
+f.close()
+
+print(another_dictionary)
+
+**********
+
+Output (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/IC_CMEE/2025-26/Coursework/StudentRepos/YianLiu_yl14225/week2/code/basic_io3.py", line 9, in <module>
+    f = open('../sandbox/testp.p','wb')  # 注意二进制写
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/testp.p'
+
+**********
+======================================================================
+Script: basic_io1.py
+
+Contents:
+
+**********
+#############################
+# FILE INPUT
+#############################
+# Open a file for reading
+with open('../sandbox/test.txt', 'r') as f:
+    # use "implicit" for loop:
+    # if the object is a file, python will cycle over lines
+    for line in f:
+        print(line)
+
+# Once you drop out of the with, the file is automatically closed
+
+# Same example, skip blank lines
+with open('../sandbox/test.txt', 'r') as f:
+    for line in f:
+        if len(line.strip()) > 0:
+            print(line)
+
+
+**********
+
+Output (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/IC_CMEE/2025-26/Coursework/StudentRepos/YianLiu_yl14225/week2/code/basic_io1.py", line 5, in <module>
+    with open('../sandbox/test.txt', 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/test.txt'
+
+**********
+======================================================================
+Script: oaks_test.py
+
+Contents:
+
+**********
+def is_an_oak(name):
+    """ Returns True if name is starts with 'quercus'
+
+    >>> is_an_oak('Fagus sylvatica')
+    False
+
+    >>> is_an_oak('Quercus robur')
+    True
+
+    # A typo
+    >>> is_an_oak('Quercuss')
+    False
+    """
+    return name.lower().startswith('quercus ')
+
+print(is_an_oak.__doc__)
+
+import doctest
+doctest.testmod()   # Run embedded tests
+
+**********
+
+Output (first 500 chars):
+
+**********
+ Returns True if name is starts with 'quercus'
+
+    >>> is_an_oak('Fagus sylvatica')
+    False
+
+    >>> is_an_oak('Quercus robur')
+    True
+
+    # A typo
+    >>> is_an_oak('Quercuss')
+    False
+    
+
+**********
+No errors.
+======================================================================
+Script: cfexercises1.py
+
+Contents:
+
+**********
+
+def foo_1(x):
+    return x ** 0.5
+
+def foo_2(x, y):
+    if x > y:
+        return x
+    return y
+
+def foo_3(x, y, z):
+    if x > y:
+        x, y = y, x
+    if x > z:
+        x, z = z, x
+    if y > z:
+        y, z = z, y
+    return [x, y, z]
+
+def foo_4(x):
+    result = 1
+    for i in range(1, x + 1):
+        result = result * i
+    return result
+
+def foo_5(x):
+    if x < 0:
+        raise ValueError("x must be non-negative")
+    if x in (0, 1):
+        return 1
+    return x * foo_5(x - 1)
+     
+def foo_6(x):
+    if x < 0:
+        raise ValueError("x must be non-negative")
+    facto = 1
+    while x >= 1:
+        facto *= x
+        x -= 1
+    return facto
+
+import sys
+
+def main (argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+
+    print("foo_1(9)        ->", foo_1(9))
+    print("foo_2(10, 3)    ->", foo_2(10, 3))
+    print("foo_3(9, 2, 5)  ->", foo_3(9, 2, 5))
+    print("foo_4(5)        ->", foo_4(5))
+    print("foo_5(6)        ->", foo_5(6))
+    print("foo_6(7)        ->", foo_6(7))
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+**********
+
+Output (first 500 chars):
+
+**********
+foo_1(9)        -> 3.0
+foo_2(10, 3)    -> 10
+foo_3(9, 2, 5)  -> [2, 5, 9]
+foo_4(5)        -> 120
+foo_5(6)        -> 720
+foo_6(7)        -> 5040
+
+**********
+No errors.
+======================================================================
+Script: debugme.py
+
+Contents:
+
+**********
+def buggyfunc(x):
+    y = x
+    for i in range(x):
+        try: 
+            y = y-1
+            z = x/y
+        except ZeroDivisionError:
+            print(f"The result of dividing a number by zero is undefined")
+        except:
+            print(f"This didn't work;{x = }; {y = }")
+        else:
+            print(f"OK; {x = }; {y = }, {z = };")
+    return z
+
+buggyfunc(20)
+**********
+
+Output (first 500 chars):
+
+**********
+OK; x = 20; y = 19, z = 1.0526315789473684;
+OK; x = 20; y = 18, z = 1.1111111111111112;
+OK; x = 20; y = 17, z = 1.1764705882352942;
+OK; x = 20; y = 16, z = 1.25;
+OK; x = 20; y = 15, z = 1.3333333333333333;
+OK; x = 20; y = 14, z = 1.4285714285714286;
+OK; x = 20; y = 13, z = 1.5384615384615385;
+OK; x = 20; y = 12, z = 1.6666666666666667;
+OK; x = 20; y = 11, z = 1.8181818181818181;
+OK; x = 20; y = 10, z = 2.0;
+OK; x = 20; y = 9, z = 2.2222222222222223;
+OK; x = 20; y = 8, z = 2.5;
+OK; x = 20; y = 7,
+**********
+No errors.
+======================================================================
+Script: boilerplate.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Description of this program or application.
+You can use several lines"""
+
+__appname__ = '[123]'
+__author__ = 'Yian.Liu25@imperial.ac.uk'
+__version__ = '0.0.1'
+__license__ = "License for this code/program"
+
+## imports ##
+import sys # module to interface our program with the operating system
+
+## constants ##
+
+
+## functions ##
+def main(argv):
+    """ Main entry point of the program """
+    print('This is a boilerplate') # NOTE: indented using two tabs or 4 spaces
+    return 0
+
+if __name__ == "__main__": 
+    """Makes sure the "main" function is called from command line"""  
+    status = main(sys.argv)
+    sys.exit(status)
+**********
+
+Output (first 500 chars):
+
+**********
+This is a boilerplate
+
+**********
+No errors.
+======================================================================
+Script: basic_io2.py
+
+Contents:
+
+**********
+#############################
+# FILE OUTPUT
+#############################
+# Save the elements of a list to a file
+list_to_save = range(100)
+
+f = open('../sandbox/testout.txt','w')
+for i in list_to_save:
+    f.write(str(i) + '\n')  # 每个数字写一行
+
+f.close()
+
+**********
+
+Output (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/IC_CMEE/2025-26/Coursework/StudentRepos/YianLiu_yl14225/week2/code/basic_io2.py", line 7, in <module>
+    f = open('../sandbox/testout.txt','w')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/testout.txt'
+
+**********
+======================================================================
+Script: control_flow.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Some functions exemplifying the use of control statements"""
+#docstrings are considered part of the running code (normal comments are
+#stripped). Hence, you can access your docstrings at run time.
+__author__ = 'Samraat Pawar (s.pawar@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+import sys
+
+def even_or_odd(x=0): # if not specified, x should take value 0.
+
+    """Find whether a number x is even or odd."""
+    if x % 2 == 0: #The conditional if
+        return f"{x} is Even!"
+    return f"{x} is Odd!"
+
+def largest_divisor_five(x=120):
+    """Find which is the largest divisor of x among 2,3,4,5."""
+    largest = 0
+    if x % 5 == 0:
+        largest = 5
+    elif x % 4 == 0: #means "else, if"
+        largest = 4
+    elif x % 3 == 0:
+        largest = 3
+    elif x % 2 == 0:
+        largest = 2
+    else: # When all other (if, elif) conditions are not met
+        return f"No divisor found for {x}!" # Each function can return a value or a variable.
+    return f"The largest divisor of {x} is {largest}"
+
+def is_prime(x=70):
+    """Find whether an integer is prime."""
+    for i in range(2, x): #  "range" returns a sequence of integers
+        if x % i == 0:
+            print(f"{x} is not a prime: {i} is a divisor") 
+            return False
+    print(f"{x} is a prime!")
+    return True 
+
+def find_all_primes(x=22):
+    """Find all the primes up to x"""
+    allprimes = []
+    for i in range(2, x + 1):
+        if is_prime(i):
+            allprimes.append(i)
+    print(f"There are {len(allprimes)} primes between 2 and {x}")
+    return allprimes
+      
+def main(argv):
+    print(even_or_odd(22))
+    print(even_or_odd(33))
+    print(largest_divisor_five(120))
+    print(largest_divisor_five(121))
+    print(is_prime(60))
+    print(is_prime(59))
+    print(find_all_primes(100))
+    return 0
+
+if (__name__ == "__main__"):
+    status = main(sys.argv)
+    sys.exit(status)
+**********
+
+Output (first 500 chars):
+
+**********
+22 is Even!
+33 is Odd!
+The largest divisor of 120 is 5
+No divisor found for 121!
+60 is not a prime: 2 is a divisor
+False
+59 is a prime!
+True
+2 is a prime!
+3 is a prime!
+4 is not a prime: 2 is a divisor
+5 is a prime!
+6 is not a prime: 2 is a divisor
+7 is a prime!
+8 is not a prime: 2 is a divisor
+9 is not a prime: 3 is a divisor
+10 is not a prime: 2 is a divisor
+11 is a prime!
+12 is not a prime: 2 is a divisor
+13 is a prime!
+14 is not a prime: 2 is a divisor
+15 is not a prime: 3 is a divisor
+16 is
+**********
+No errors.
+======================================================================
+Script: lc1.py
+
+Contents:
+
+**********
+birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
+          ('Delichon urbica','House martin',19),
+          ('Junco phaeonotus','Yellow-eyed junco',19.5),
+          ('Junco hyemalis','Dark-eyed junco',19.6),
+          ('Tachycineata bicolor','Tree swallow',20.2),
+         )
+
+#(1) Write three separate list comprehensions that create three different
+# lists containing the latin names, common names and mean body masses for
+# each species in birds, respectively. 
+
+latin_lc = [lat for (lat, _, _) in birds]
+common_lc = [com for (_, com, _) in birds]
+mass_lc   = [mass for (_,  _,  mass) in birds]
+
+print("Latin names  (lc):", latin_lc)
+print("Common names (lc):", common_lc)
+print("Masses (lc)      :", mass_lc)
+
+# (2) Now do the same using conventional loops (you can choose to do this 
+# before 1 !). 
+latin_for, common_for, mass_for = [], [], []
+for lat, com, mass in birds:
+    latin_for.append(lat)
+    common_for.append(com)
+    mass_for.append(mass)
+
+print("Latin names  (for):", latin_for)
+print("Common names (for):", common_for)
+print("Masses (for)      :", mass_for)
+
+# A nice example out out is:
+# Step #1:
+# Latin names:
+# ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+# ... etc.
+ 
+**********
+
+Output (first 500 chars):
+
+**********
+Latin names  (lc): ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+Common names (lc): ['Savannah sparrow', 'House martin', 'Yellow-eyed junco', 'Dark-eyed junco', 'Tree swallow']
+Masses (lc)      : [18.7, 19, 19.5, 19.6, 20.2]
+Latin names  (for): ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+Common names (for): ['Savannah sparrow', 'House martin', 'Yellow-eyed junco', '
+**********
+No errors.
+======================================================================
+Script: oaks_debugme.py
+
+Contents:
+
+**********
+import csv
+import sys
+import re
+from pathlib import Path
+
+OAK_RE = re.compile(r'^\s*quercus\b', re.IGNORECASE)
+
+def is_an_oak(name):
+    """Return True if name starts with genus 'Quercus' (word-boundary)."""
+    if not isinstance(name, str):
+        return False
+    return bool(OAK_RE.search(name.strip()))
+
+def main(argv):
+    in_path = Path("../data/TestOaksData.csv")
+    out_path = Path("../results/JustOaksData.csv")
+
+    with in_path.open(newline="", encoding="utf-8") as f, out_path.open("w", newline="", encoding="utf-8") as g:
+        taxa = csv.reader(f)
+        csvwrite = csv.writer(g)
+        for row in taxa:
+            if is_an_oak(row[0]):
+                csvwrite.writerow([row[0], row[1]])
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
+**********
+
+Output (first 500 chars):
+
+**********
+
+**********
+No errors.
+======================================================================
+Script: tuple.py
+
+Contents:
+
+**********
+birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
+          ('Delichon urbica','House martin',19),
+          ('Junco phaeonotus','Yellow-eyed junco',19.5),
+          ('Junco hyemalis','Dark-eyed junco',19.6),
+          ('Tachycineata bicolor','Tree swallow',20.2),
+        )
+
+# Birds is a tuple of tuples of length three: latin name, common name, mass.
+# write a (short) script to print these on a separate line or output block by
+# species 
+# 
+# A nice example output is:
+# 
+# Latin name: Passerculus sandwichensis Common name: Savannah sparrow Mass: 18.7
+# ... etc.
+
+for latin, common, mass in birds:
+    print(f"Latin name: {latin}  Common name: {common}  Mass: {mass}")
+**********
+
+Output (first 500 chars):
+
+**********
+Latin name: Passerculus sandwichensis  Common name: Savannah sparrow  Mass: 18.7
+Latin name: Delichon urbica  Common name: House martin  Mass: 19
+Latin name: Junco phaeonotus  Common name: Yellow-eyed junco  Mass: 19.5
+Latin name: Junco hyemalis  Common name: Dark-eyed junco  Mass: 19.6
+Latin name: Tachycineata bicolor  Common name: Tree swallow  Mass: 20.2
+
+**********
+No errors.
+======================================================================
+Script: test_control_flow.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Some functions exemplifying the use of control statements"""
+
+__author__ = 'Your Name (Your.Name@your.email.address)'
+__version__ = '0.0.1'
+
+import sys
+import doctest # Import the doctest module
+
+def even_or_odd(x=0):
+    """Find whether a number x is even or odd.
+      
+    >>> even_or_odd(10)
+    '10 is Even!'
+    
+    >>> even_or_odd(5)
+    '5 is Odd!'
+        
+    in case of negative numbers, the positive is taken:    
+    >>> even_or_odd(-2)
+    '-2 is Even!'
+    
+    """
+    #Define function to be tested
+    if x % 2 == 0:
+        return f"{x} is Even!"
+    return f"{x} is Odd!"
+
+def main(argv): 
+    print(even_or_odd(22))
+    print(even_or_odd(33))
+    return 0
+
+if (__name__ == "__main__"):
+    status = main(sys.argv)
+
+doctest.testmod()   # To run with embedded tests
+**********
+
+Output (first 500 chars):
+
+**********
+22 is Even!
+33 is Odd!
+
+**********
+No errors.
+======================================================================
+Script: basic_csv.py
+
+Contents:
+
+**********
+import csv
+
+# Read a file containing:
+# 'Species','Infraorder','Family','Distribution','Body mass male (Kg)'
+with open('../data/testcsv.csv','r') as f:
+    csvread = csv.reader(f)
+    temp = []
+    for row in csvread:
+        temp.append(tuple(row))
+        print(row)
+        print("The species is", row[0])
+
+# write a file containing only species name and Body mass
+with open('../data/testcsv.csv','r') as f:
+    with open('../data/bodymass.csv','w') as g:
+        csvread = csv.reader(f)
+        csvwrite = csv.writer(g)
+        for row in csvread:
+            print(row)
+            csvwrite.writerow([row[0], row[4]])
+
+**********
+
+Output (first 500 chars):
+
+**********
+['Species', 'Infraorder', 'Family', 'Distribution', 'Body mass male (Kg)']
+The species is Species
+['Daubentonia_madagascariensis', 'Chiromyiformes ', 'Daubentoniidae', 'Madagascar', '2.7']
+The species is Daubentonia_madagascariensis
+['Allocebus_trichotis', 'Lemuriformes', 'Cheirogaleidae', 'Madagascar', '0.1']
+The species is Allocebus_trichotis
+['Avahi_laniger', 'Lemuriformes', 'Indridae', 'America', '1.03']
+The species is Avahi_laniger
+['Avahi_occidentalis', 'Lemuriformes', 'Indridae', 'Madagas
+**********
+No errors.
+======================================================================
+Script: align_seqs.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+"""
+
+A very basic DNA aligner:
+- read two sequences from a tiny CSV/TXT file
+- slide the shorter over the longer
+- choose the start position with the highest match score
+- print and save the best alignment
+
+"""
+
+INPUT_PATH  = "../data/two_seqs.csv"
+OUTPUT_PATH = "../results/best_alignment.txt" 
+
+def read_two_seqs(path):
+    items = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            # If there is a comma in the line, split it by the comma first
+            parts = [p.strip() for p in line.split(",") if p.strip()]
+            items.extend(parts if parts else [line])
+
+            if len(items) < 2:
+                raise ValueError(f"Fewer than two sequences in the input file：{path}")
+
+    # Take only the first two, remove spaces and capitalize them
+    s1 = items[0].replace(" ", "").upper()
+    s2 = items[1].replace(" ", "").upper()
+    return s1, s2
+
+def calculate_score(longer, shorter, start):
+    """Append shorter to longer starting from start and return (score, matching marker line)."""
+    score = 0
+    marks = []
+    for i, base in enumerate(shorter):
+        j = start + i
+        if j >= len(longer):
+            break
+        if longer[j] == base:
+            score += 1
+            marks.append("|")   # Matches are marked with a vertical line
+        else:
+            marks.append(" ")
+    return score, (" " * start) + "".join(marks)
+
+def best_alignment(seq1, seq2):
+        # Make "longer" always the longer line, 
+        # and use "top" to save the "top line" when displaying.”
+    if len(seq2) > len(seq1):
+        longer, shorter = seq2, seq1
+        top = seq2
+    else:
+        longer, shorter = seq1, seq2
+        top = seq1
+
+    best_score = -1
+    best_start = 0
+    best_matchline = ""
+    best_align = ""
+
+    for start in range(len(longer)):
+        score, matchline = calculate_score(longer, shorter, start)
+        if score > best_score:
+            best_score = score
+            best_start = start
+            best_matchline = matchline
+            best_align = ("." * start) + shorter 
+
+    lines = [
+        "Best alignment",
+        "--------------",
+        f"Score : {best_score}",
+        f"Start : {best_start}",
+        "",
+        top,
+        best_matchline,
+        best_align,
+        ""
+    ]
+    return "\n".join(lines)
+
+
+def main():
+    # Read Sequence
+    s1, s2 = read_two_seqs(INPUT_PATH)
+    # Calculate the best alignment
+    report = best_alignment(s1, s2)
+    # Print
+    print(report)
+    # Write file
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(report)
+    print(f"Saved to: {OUTPUT_PATH}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+**********
+
+Output (first 500 chars):
+
+**********
+Best alignment
+--------------
+Score : 3
+Start : 0
+
+GATTACA
+|  | | 
+GCATGCU
+
+Saved to: ../results/best_alignment.txt
+
+**********
+No errors.
+
+======================================================================
+FEEDBACK SUMMARY
+======================================================================
+
+Scripts tested: 28
+Scripts successful: 22
+Scripts with errors: 6
+Warnings/Notes: 1
+
+IMPORTANT DEBUGGING GUIDANCE:
+------------------------------
+
+Please review all warnings and errors, and your directory structure based on the above log.
+
+Ask yourself: Why did I not get these warnings or errors on my machine when I tested my code?
+Common reasons for environment differences:
+
+• File paths: Your local machine may have different directory structures
+• Dependencies: Missing packages or different versions
+• File permissions: Scripts may not be executable on the testing server
+• Case sensitivity: Linux systems are case-sensitive (your laptop may not be)
+• Working directory: Scripts may assume they run from a specific location
+• Input files: Required data files may be missing or in wrong locations
+
+Debugging steps:
+1. Test your code in a clean environment (fresh directory)
+2. Check all file paths are relative and correct
+3. Verify all required files are present and properly named
+4. Test on a case-sensitive system if possible
+5. Run your scripts from different directories to check robustness
+
+Fix these issues and test again. Good debugging skills are essential for scientific computing!
+
