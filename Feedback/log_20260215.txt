@@ -1,0 +1,3372 @@
+======================================================================
+AUTOMATED FEEDBACK LOG
+======================================================================
+
+HOW TO READ THIS FEEDBACK:
+--------------------------
+1. This log is organized into sections (structure, documentation, quality, git history).
+2. Each section reports checks performed and highlights warnings (⚠) or failures (✗).
+3. Script execution results appear later in the log with full script contents, output, and errors.
+4. Scripts are run in a headless environment (no GUI applications).
+5. Criterion labels (e.g., "Criterion 1") refer to the course rubric for marking guidance.
+6. Scripts that have been named incorrectly by a student may be classified as "missing" if the the name deviates significantly from what was expected/required; Student will not be penalised heavily for this, but should discuss with assessor/instructor if they are concerned.).
+7. IMPORTANT: Read to the end for the summary and debugging guidance.
+
+Evidence collection keys (used in Script Execution Results):
+  - Command: exact command executed for the script.
+  - CWD: working directory used for the command.
+  - Exit code: 0 means success; non-zero means an error occurred.
+  - Stdout: standard output (normal program output).
+  - Stderr: standard error (warnings and error messages).
+  - Timed out: whether the run exceeded the time limit.
+
+======================================================================
+
+RUN CONFIGURATION
+-----------------
+Command: feedback.py tmp/students_all.csv repos/ --weeks 1-4 --groupwork --groups-csv tmp/groups.csv --group-repos-root repos_groups --script-rules configs/assignments/script_rules_2025-26.json
+Weeks: 1-4
+Groupwork: enabled
+Script rules: configs/assignments/script_rules_2025-26.json
+
+Starting testing for Yian Liu
+
+Group name: 04_Dashing_Dingos
+Group repo URL: git@github.com:Qascve/04_Dashing_Dingos.git
+Group repo path: repos_groups/04_Dashing_Dingos
+
+Processing all code files found in code directories
+
+Your current Git repo size is about 3.13 MiB on disk
+
+======================================================================
+REPOSITORY STRUCTURE ANALYSIS
+======================================================================
+
+Top-level directories: Feedback, week1, week2, week4
+Top-level files: README.md
+
+Standard files present:
+  README file: ✓ Yes
+  .gitignore file: ✓ Yes
+
+Code directories found (3):
+  • week1/code
+  • week4/code
+  • week2/code
+
+Repository statistics:
+  Total directories: 16
+  Total files: 62
+  Maximum directory depth: 3
+
+Scripts found (total: 28):
+  Python (.py): 19
+  R (.r): 3
+  Shell (.sh): 6
+
+======================================================================
+
+Found 3 code directory(ies):
+  • week1/code
+  • week2/code
+  • week4/code
+
+Found 28 code files to test.
+
+======================================================================
+DUPLICATE SCRIPT FILENAMES (Criterion 1)
+======================================================================
+
+No duplicate script basenames detected.
+
+======================================================================
+SCRIPT CLASSIFICATION (Taught vs Assigned)
+======================================================================
+
+This classification is used to scope some criteria (e.g., Criterion 8).
+Rules loaded: configs/assignments/script_rules_2025-26.json
+  taught:   10
+  assigned: 10
+  unknown:  8
+
+Criterion 8 scope: assigned scripts only
+
+Note: Expected scripts/files checks scan all code directories in the repository (not just the selected weeks).
+
+======================================================================
+CHECKING FOR EXPECTED SCRIPTS
+
+Expected scripts list contains 62 entries.
+
+Scope: non-groupwork + groupwork (groupwork excluded)
+Expected taught scripts: 50
+Expected assigned scripts: 12
+
+Expected taught scripts (50):
+  .py (20):
+    - blackbirds.py
+    - boilerplate.py
+    - control_flow.py
+    - debugme.py
+    - loops.py
+    - myexamplescript.py
+    - myscript.py
+    - profileme.py
+    - profileme2.py
+    - re4.py
+    - regexs.py
+    - run_fmr_r.py
+    - scope.py
+    - sysargv.py
+    - test_control_flow.py
+    - timeitme.py
+    - using_name.py
+    - using_os.py
+    - Vectorize1.py
+    - vectorize2.py
+  .r (23):
+    - apply1.R
+    - apply2.R
+    - basic_io.R
+    - boilerplate.R
+    - break.R
+    - browse.R
+    - control.R
+    - control_flow.R
+    - DataWrang.R
+    - fmr.R
+    - Girko.R
+    - MyBars.R
+    - next.R
+    - plotLin.R
+    - preallocate.R
+    - r_conditionals.R
+    - ricker.R
+    - sample.R
+    - SQLinR.R
+    - TreeHeight.R
+    - try.R
+    - Vectorize1.R
+    - vectorize2.R
+  .sh (7):
+    - boilerplate.sh
+    - ConcatenateTwoFiles.sh
+    - CountLines.sh
+    - MyExampleScript.sh
+    - tabtocsv.sh
+    - tiff2_png.sh
+    - variables.sh
+
+Expected assigned scripts (12):
+  .py (6):
+    - align_seqs.py
+    - cfexercises1.py
+    - dictionary.py
+    - lc1.py
+    - lc2.py
+    - tuple.py
+  .r (3):
+    - Florida.R
+    - PP_Dists.R
+    - PP_Regress.R
+  .sh (2):
+    - csvtospace.sh
+    - run_get_TreeHeight.sh
+  .txt (1):
+    - unixPrac1.txt
+
+Found taught scripts (matched) (10):
+  .py (5):
+    - boilerplate.py
+    - control_flow.py
+    - debugme.py
+    - MyExampleScript.py
+    - test_control_flow.py
+  .r (1):
+    - TreeHeight.R
+  .sh (4):
+    - boilerplate.sh
+    - ConcatenateTwoFiles.sh
+    - Countlines.sh
+    - tabtocsv.sh
+
+Found assigned scripts (matched) (10):
+  .py (6):
+    - align_seqs.py
+    - cfexercises1.py
+    - dictionary.py
+    - lc1.py
+    - lc2.py
+    - tuple.py
+  .r (2):
+    - Florida.R
+    - PP_Regress.R
+  .sh (1):
+    - csvtospace.sh
+  .txt (1):
+    - UnixPrac1.txt
+
+Found unexpected scripts (not in expected non-groupwork list) (10):
+  .py (8):
+    - basic_csv.py
+    - basic_io1.py
+    - basic_io2.py
+    - basic_io3.py
+    - cfexercises2.py
+    - oaks.py
+    - oaks_debugme.py
+    - oaks_test.py
+  .sh (1):
+    - tiff2png.sh
+  .txt (1):
+    - test.txt
+
+Missing 42 expected scripts:
+  Missing taught (40):
+  .py (15):
+    - blackbirds.py
+    - loops.py
+    - myscript.py
+    - profileme.py
+    - profileme2.py
+    - re4.py
+    - regexs.py
+    - run_fmr_r.py
+    - scope.py
+    - sysargv.py
+    - timeitme.py
+    - using_name.py
+    - using_os.py
+    - Vectorize1.py
+    - vectorize2.py
+  .r (22):
+    - apply1.R
+    - apply2.R
+    - basic_io.R
+    - boilerplate.R
+    - break.R
+    - browse.R
+    - control.R
+    - control_flow.R
+    - DataWrang.R
+    - fmr.R
+    - Girko.R
+    - MyBars.R
+    - next.R
+    - plotLin.R
+    - preallocate.R
+    - r_conditionals.R
+    - ricker.R
+    - sample.R
+    - SQLinR.R
+    - try.R
+    - Vectorize1.R
+    - vectorize2.R
+  .sh (3):
+    - MyExampleScript.sh
+    - tiff2_png.sh
+    - variables.sh
+
+  Missing assigned (2):
+  .r (1):
+    - PP_Dists.R
+  .sh (1):
+    - run_get_TreeHeight.sh
+
+======================================================================
+
+======================================================================
+CHECKING FOR EXPECTED OUTPUTS
+
+Expected outputs list contains 1 entries.
+
+Missing 1 expected outputs:
+  ✗ **/*_space.txt
+
+Found 5 additional non-script files not in expected outputs list:
+  + week1/code/UnixPrac1.txt
+  + week1/code/image1.tif
+  + week1/code/image2.tif
+  + week1/code/test.txt
+  + week2/code/__pycache__/oaks_test.cpython-312.pyc
+
+======================================================================
+
+Criterion evidence snapshot:
+  Criterion 2/10:
+  - Expected outputs: 1
+  - Missing expected outputs: 1
+  - Validated outputs: 0
+
+======================================================================
+REPOSITORY QUALITY & ORGANISATION (Criterion 1)
+======================================================================
+
+.gitignore Analysis:
+  ✓ .gitignore file present (3 rules)
+  ⚠ Missing patterns: Python (__pycache__, *.pyc), R (.Rhistory, .RData), OS files (.DS_Store, Thumbs.db), Editor files (*.swp, .vscode), Results/outputs
+
+Large Files Check:
+  ✓ No files > 10MB detected
+
+Results Directories - 2 found:
+  ✗ week4/results contains 7 files
+     Files: values.tex, PP_Regress_Results.csv, TreeHts.csv, report.pdf, PP_Regress.pdf
+  ✗ week2/results contains 1 files
+     Files: JustOaksData.csv
+
+Standard Directory Layout:
+  ✓ Week-based structure detected (3 weeks)
+  Weeks with complete structure (code/data/results): 2/3
+  ⚠ Incomplete week structures:
+     week1: missing results
+
+Naming Consistency:
+  Week naming patterns: lowercase_week
+  ✓ Consistent week naming convention
+
+Criterion evidence snapshot:
+  Criterion 1:
+  - .gitignore present: Yes
+  - Results dirs with files: 2
+  - Large files >10MB: 0
+
+======================================================================
+
+======================================================================
+DOCUMENTATION ANALYSIS (Criterion 4)
+======================================================================
+
+Main README File:
+  ✓ README file present: README.md
+  Lines: 1 (non-empty)
+  Headings: 0
+  Quality: Poor (0/5)
+  ⚠ No code examples found
+
+Code Documentation:
+  Total code files analyzed: 28
+  Overall documentation ratio: 39.3%
+
+  Python files (19):
+    With docstrings: 6/19 (31.6%)
+    ⚠ Low docstring coverage - add function/class docstrings
+  R files (3):
+    With comments: 2/3 (66.7%)
+    → Moderate comment coverage
+  Shell scripts (6):
+    With comments: 3/6 (50.0%)
+    → Moderate comment coverage
+
+Per-Week Documentation:
+  Total weeks: 3
+  Weeks with README: 3/3 (100.0%)
+  ✓ Good per-week documentation coverage
+
+Documentation Best Practices:
+  • Main README should explain project purpose, structure, and usage
+  • Python: Use docstrings for modules, classes, and functions
+  • R: Add comments explaining logic and data transformations
+  • Shell: Document script purpose, arguments, and usage
+  • Per-week READMEs help track learning and activities
+
+Criterion evidence snapshot:
+  Criterion 4:
+  - README present: Yes
+  - Documentation ratio: 39.3%
+  - Weeks with README: 3/3
+
+======================================================================
+
+======================================================================
+CODE QUALITY & STYLE ANALYSIS (Criterion 3)
+======================================================================
+
+Available Tools:
+  Python syntax checker: ✓
+  Pylint: ✓
+  Pyflakes: ✓
+  Shellcheck: ✗ (not installed)
+
+Python Code Quality (19 files):
+  Clean files: 18/19
+  Files with issues: 1
+  ⚠ Style issues: 2
+  → Mostly clean code with minor style issues
+
+R Code Quality (3 files):
+  Clean files: 0/3
+  Files with issues: 3
+  ⚠ Style issues: 51
+
+  Files with significant issues:
+    week4/code/PP_Regress.R:
+      • Line 12: Consider using <- instead of = for assignment
+      • Line 14: Consider using <- instead of = for assignment
+      • Line 19: Consider using <- instead of = for assignment
+    week4/code/Florida.R:
+      • Line 12: Consider using <- instead of = for assignment
+      • Line 19: Consider using <- instead of = for assignment
+      • Line 21: Consider using <- instead of = for assignment
+  ⚠ Multiple style issues detected
+
+Shell Script Quality (6 files):
+  → Basic checks only (shellcheck not installed)
+  Clean files: 3/6
+  Files with issues: 3
+  ⚠ Basic issues: 4
+  ⚠ Multiple issues detected
+
+Code Quality Best Practices:
+  • Python: Follow PEP 8 style guide, use meaningful variable names
+  • R: Use <- for assignment, consistent indentation and naming
+  • Shell: Use shellcheck, quote variables, check for errors
+  • All: Keep lines under 120 chars, avoid complex nested logic
+  • Run linters locally: pylint, shellcheck, or IDE integrations
+
+Criterion evidence snapshot:
+  Criterion 3:
+  - Python files with issues: 1
+  - R files with issues: 3
+  - Shell files with issues: 3
+
+======================================================================
+
+======================================================================
+LEARNING PROGRESSION (Criterion 11)
+======================================================================
+
+Weeks detected: 1, 2, 4
+
+Per-week summary (heuristic):
+  Week | Scripts | Lines | Docs | Functions | Validation | Error-handling | Py syntax OK
+     1 |       6 |    63 |  50% |       33% |        33% |           33% |         0%
+     2 |      19 |   539 |  32% |       58% |         0% |            5% |       100%
+     4 |       3 |   136 |  67% |        0% |         0% |           33% |         0%
+
+Progression rating: moderate
+Compared week 1 → week 4:
+  Docs coverage: 50% → 67% (Δ +17%)
+  Validation coverage: 33% → 0% (Δ -33%)
+  Error-handling coverage: 33% → 33% (Δ +0%)
+  Functions coverage: 33% → 0% (Δ -33%)
+  Python syntax OK: 0% → 0% (Δ +0%)
+  Scripts: 6 → 3
+  Lines:   63 → 136
+
+Per-week README coverage:
+  Weeks with README: 3/3 (100%)
+
+Guidance (from rubric expectations):
+  • Later weeks should show more structure (functions) and robustness (input checks).
+  • Documentation habits (per-week READMEs + script headers) should become consistent.
+
+Criterion evidence snapshot:
+  Criterion 11:
+  - Weeks detected: 3
+  - Progression rating: moderate
+
+======================================================================
+
+======================================================================
+ERROR HANDLING & INPUT VALIDATION (Criterion 8)
+======================================================================
+
+Scripts Analyzed: 10/10
+
+Code Analysis (Error Handling Patterns):
+  Scripts with error handling: 2/10 (20.0%)
+  Scripts with input validation: 1/10 (10.0%)
+  ⚠ Low error handling coverage - add try/except, tryCatch, or error checks
+
+Runtime Testing (Missing File Handling):
+  Graceful failures: 1/10 (10.0%)
+  Scripts with informative errors: 1/10
+  Scripts that crash on missing file: 9/10
+  ⚠ Many scripts fail without proper error handling
+
+Scripts Needing Improvement:
+
+  week2/code/align_seqs.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/cfexercises1.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/dictionary.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/lc1.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/lc2.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/oaks_debugme.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week2/code/tuple.py:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week4/code/Florida.R:
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+
+  week4/code/PP_Regress.R:
+    ⚠ No error handling patterns detected in code
+    ⚠ No input validation detected
+    ✗ Does not handle missing files gracefully
+    ⚠ Error messages not informative or absent
+    Error output: Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead. 
+`geom_smooth()` using formula = 
+
+Error Handling Best Practices:
+  • Python: Use try/except blocks, check file existence with os.path.exists()
+  • Python: Validate arguments early, provide usage messages (argparse)
+  • R: Use tryCatch(), check with file.exists(), validate args with stopifnot()
+  • R: Provide informative error messages with stop() or warning()
+  • Shell: Use set -e, check file existence with [ -f ], validate arg count
+  • Shell: Provide usage messages when arguments are missing
+  • All: Exit with non-zero status on errors, print informative messages to stderr
+
+Criterion evidence snapshot:
+  Criterion 8:
+  - Scripts tested: 10
+  - With error handling: 2
+  - Graceful failures: 1
+
+======================================================================
+
+======================================================================
+VERSION CONTROL (Criterion 5)
+======================================================================
+Criterion evidence snapshot:
+  Criterion 5:
+  - Commits: 12
+  - Branches: 3
+  - Unwanted files: 4
+
+
+Total commits: 12
+Total branches: 3
+Merge commits: 0
+
+Commit Message Quality:
+  Average message length: 19.2 characters
+  Properly capitalized: 5/12
+  Empty/generic messages: 0/12
+  Quality ratio: 100.0%
+
+Commit Activity by Author:
+  YianLiu: 9 commits, +114784/-40 lines
+  Samraat Pawar: 3 commits, +3003/-2 lines
+
+Branches (Criterion 5 - Branching practice):
+  Main branches: 3
+  Feature/topic branches: 0
+  No feature branches detected (all work on main branch)
+
+Unwanted Files Committed (should be in .gitignore):
+  ✗ week2/code/__pycache__/oaks_test.cpython-312.pyc
+  ✗ week4/.Rhistory
+  ✗ week4/results/.Rhistory
+  ✗ week4/sandbox/report.log
+
+======================================================================
+
+======================================================================
+COLLABORATIVE WORKFLOW (Criteria 6-7)
+======================================================================
+Criterion evidence snapshot:
+  Criteria 6/7:
+  - Commits: 61
+  - Branches: 4
+
+
+Total commits: 61
+Total branches: 4
+Merge commits: 14
+
+Commit Activity by Author:
+  Zhou Yang: 19 commits, +20/-14 lines
+  CCC: 14 commits, +35834/-233 lines
+  Zhou: 13 commits, +298/-391 lines
+  Anaga Ambady: 5 commits, +138/-11 lines
+  Qascve: 3 commits, +179/-212 lines
+  Jasper5580: 3 commits, +10/-6 lines
+  YianLiu: 2 commits, +78583/-0 lines
+  slowslothsloth: 1 commits, +0/-0 lines
+  uk21548: 1 commits, +3/-0 lines
+
+Branches (Criterion 6 - Collaborative workflow):
+  Main branches: 3
+  Feature/topic branches: 0
+  No feature branches detected (all work on main branch)
+
+Individual Contribution Analysis for Yian Liu:
+  Commits by student: 2
+  Contribution ratio: 3.3% of total commits
+  Total lines changed: 78583
+  Average files per commit: 5.0
+  CONTRIBUTIONS.md present: No
+  Matched Git authors: YianLiu
+  Recent commit dates: 2025-11-28, 2025-10-26
+
+======================================================================
+
+======================================================================
+CONTRIBUTIONS FILE (Criterion 7)
+======================================================================
+
+Source: group repo
+Path checked: repos_groups/04_Dashing_Dingos
+
+CONTRIBUTIONS.md not found.
+For group work, include this file to document individual contributions.
+
+Criterion evidence snapshot:
+  Criterion 7:
+  - CONTRIBUTIONS.md present: No
+
+======================================================================
+GROUPWORK SCRIPT EVIDENCE (shared across group members)
+======================================================================
+
+======================================================================
+GROUPWORK EXPECTED SCRIPTS
+
+Expected scripts list contains 4 entries.
+
+Scope: groupwork-only
+Expected taught scripts: 0
+Expected assigned scripts: 4
+
+Expected taught scripts (0):
+  (none)
+
+Expected assigned scripts (4):
+  .py (2):
+    - align_seqs_fasta.py
+    - oaks_debugme.py
+  .r (2):
+    - PP_Regress_loc.R
+    - TAutoCorr.R
+
+Found taught scripts (matched) (0):
+  (none)
+
+Found assigned scripts (matched) (4):
+  .py (2):
+    - align_seqs_fasta.py
+    - oaks_debugme.py
+  .r (2):
+    - PP_Regress_loc.R
+    - TAutoCorr.R
+
+Found additional scripts in group repo (not required for groupwork expectations) (2):
+  .py (1):
+    - align_seqs_better.py
+  .sh (1):
+    - compileLaTeX.sh
+
+All expected scripts are present.
+
+======================================================================
+
+Note: Expected outputs checking not performed (no FileList or assignment config with expected outputs provided).
+Expected outputs checking will only be performed during final assessment.
+
+======================================================================
+GROUPWORK SCRIPT EXECUTION RESULTS
+======================================================================
+The following sections show each script as executed, plus its output and errors.
+
+======================================================================
+Script: align_seqs_better.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+#usage:  python3 align_seqs_fasta.py ****.fasta ****.fasta
+import os
+import sys
+import csv
+from pathlib import Path
+from typing import Tuple, List
+import pickle #newly added
+
+# get script directory
+script_dir = Path(__file__).parent
+data_dir = script_dir / ".." / "data"
+results_dir = script_dir / ".." / "results"
+
+
+def read_fasta(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    seq = ''
+    for line in lines:
+        if not line.startswith('>'):
+            seq += line.strip()
+    return seq.upper()
+
+
+def write_results_csv(filepath, file_seq1, file_seq2, best_score, best_starts, best_matched_lines, aligned_s2_lines):
+    """write all alignment results to csv file"""
+    # convert to relative paths if they are absolute
+    try:
+        rel_file1 = Path(file_seq1).relative_to(Path.cwd())
+    except ValueError:
+        rel_file1 = Path(file_seq1).name
+    
+    try:
+        rel_file2 = Path(file_seq2).relative_to(Path.cwd())
+    except ValueError:
+        rel_file2 = Path(file_seq2).name
+    
+    with open(filepath, 'w', newline='', encoding = 'utf-8') as f: #make it to text mode
+        writer = csv.writer(f)
+        writer.writerow(["file 1 is:", str(rel_file1)])
+        writer.writerow([])  # empty row
+        writer.writerow(["file 2 is:", str(rel_file2)])
+        writer.writerow([])  # empty row
+        writer.writerow(["best score is:",str(best_score)]) #convert to str
+        writer.writerow([])  # empty row
+        for i, (start, match, aligned) in enumerate(zip(best_starts, best_matched_lines, aligned_s2_lines), start=1):
+            writer.writerow([f"Alignment #{i}"])
+            writer.writerow(["start position is:", str(start)])
+            writer.writerow(["best matched line is:", match])
+            writer.writerow(["aligned s2 line is:", aligned])
+            writer.writerow([])  # empty row
+    print(f"Results also saved to CSV file: {filepath}")
+
+
+def default_arguments():
+    
+    # define default files using relative paths from script location
+    default_file1 = data_dir / "407228412.fasta"
+    default_file2 = data_dir / "407228326.fasta"
+    
+    if len(sys.argv) == 3:
+        file_seq1 = sys.argv[1]
+        file_seq2 = sys.argv[2]
+    elif len(sys.argv) == 1:
+        # use default files
+        file_seq1 = str(default_file1.resolve())
+        file_seq2 = str(default_file2.resolve())
+    else:
+        print("Usage: python3 align_seqs_fasta.py [seq1.fasta seq2.fasta]")
+        print(f"If no files provided, defaults to {default_file1} and {default_file2}")
+        sys.exit(1)
+    
+    # check if files exist
+    if not Path(file_seq1).exists():
+        print(f"Error: File not found: {file_seq1}")
+        sys.exit(1)
+    if not Path(file_seq2).exists():
+        print(f"Error: File not found: {file_seq2}")
+        sys.exit(1)
+    
+    # read sequences using read_fasta
+    s1 = read_fasta(file_seq1)
+    s2 = read_fasta(file_seq2)
+    
+    return file_seq1, file_seq2, s1, s2
+
+
+# scoring alignment
+def calculate_score(s1: str, s2: str, start: int) -> Tuple[int, str]:
+    
+    # ensure s1 is longer than s2
+    l1 = len(s1)
+    l2 = len(s2)
+    if l1 >= l2:
+        s1 = s1
+        s2 = s2
+    else:
+        s1 = s2
+        s2 = s1
+        l1, l2 = l2, l1  # swap the two lengths
+
+    score = 0
+    matched_chars: List[str] = []
+
+    for i, base in enumerate(s2):
+        j = i + start
+        if j >= l1:
+            break  # no further overlap
+        
+        # check match and update both score and matched_chars
+        is_match = (s1[j] == base)
+        matched_chars.append("*" if is_match else "-")
+        score += is_match
+
+    return score, ("." * start) + "".join(matched_chars)
+
+#find which is the best alignment by looping through all possible start positions in seq1
+def best_alignment(seq1: str, seq2: str) -> Tuple[int, List[int], List[str], List[str]]: #added
+    """
+    find the best placement of seq2 (short) along seq1 (long).
+    if multiple positions have the same best score, keep all, not just the first one.
+
+    returns:
+      best_score: maximum number of matches (should be an integer)
+      best_start: offset positions with best score (should be a list of integers)
+      best_matched_line: match pattern with '*' (match) and '-' (mismatch)
+      aligned_s2_line: seq2 with leading dots showing offsets
+    """
+    best_score = -1
+    best_starts: List[int] = []
+    best_matched_lines: List[str] = []
+    aligned_s2_lines: List[str] = []
+    
+    for start in range(len(seq1)): #added
+        score, matched_line = calculate_score(seq1, seq2, start)
+        
+        if score > best_score:
+            best_score = score
+            best_starts = [start]
+            best_matched_lines = [matched_line]
+            aligned_s2_lines = [("." * start) + seq2]
+        elif score == best_score:
+            best_starts.append(start)
+            best_matched_lines.append(matched_line)
+            aligned_s2_lines.append(("." * start) + seq2)
+    return best_score, best_starts, best_matched_lines, aligned_s2_lines
+
+
+# run alignment and print results
+def run_alignment(file_seq1: str, file_seq2: str, s1: str, s2: str):
+    
+    best_score, best_starts, matched_lines, aligned_s2_lines = best_alignment(s1, s2)  # UPDATED
+    
+    print("\n=== Alignment summary ===")
+    print(f"Best score: {best_score}")
+    print("\nAlignment (matches='*', leading '.' shows the offset):")#changed
+#added
+    for i, (start, match, aligned) in enumerate(zip(best_starts, matched_lines, aligned_s2_lines), start=1):
+        print(f"\nAlignment #{i}")
+        print(f"Start position: {start}")
+        print(match)
+        print(aligned)
+
+    # write CSV
+    os.makedirs(results_dir, exist_ok=True)
+    csv_path = results_dir / "Alignment_results_better.csv"
+    write_results_csv(csv_path, file_seq1, file_seq2, best_score, best_starts, matched_lines, aligned_s2_lines)
+
+    #save to pickle file
+    pickle_path = results_dir / "Alignment_results_better.pkl"
+    with open(pickle_path, 'wb') as pf:
+        pickle.dump({
+            'best_score': best_score,
+            'best_starts': best_starts,
+            'matched_lines': matched_lines,
+            'aligned_s2_lines': aligned_s2_lines
+        }, pf)
+    print(f"Results also saved to pickle file: {pickle_path}")
+
+# main function
+def main():
+    file_seq1, file_seq2, s1, s2 = default_arguments()
+    run_alignment(file_seq1, file_seq2, s1, s2)
+
+
+if __name__ == "__main__":
+    main()
+**********
+
+Run metadata:
+  Command: cd "groupwork 1/code" && python3 align_seqs_better.py
+  CWD: groupwork 1/code
+  Exit code: 0
+  Runtime (s): 1.06
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+
+=== Alignment summary ===
+Best score: 545
+
+Alignment (matches='*', leading '.' shows the offset):
+
+Alignment #1
+Start position: 76
+............................................................................-**----------------*---*-----*--------*-*---***----*----*-*-*----*-*****-*--***--**-*-*-------**-----*-*--*---*------*-*-------*--*-*-*--*------*-*---*------*----------*-----**---**--*-*-*----*--**----------*---**-------------*---*----**-**--*----*----*---------**-----------------*****-----*
+**********
+No errors.
+======================================================================
+Script: align_seqs_fasta.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+#usage:  python3 align_seqs_fasta.py ****.fasta ****.fasta
+import os
+import sys
+import csv
+from pathlib import Path
+from typing import Tuple, List
+
+# get script directory
+script_dir = Path(__file__).parent
+data_dir = script_dir / ".." / "data"
+results_dir = script_dir / ".." / "results"
+
+
+def read_fasta(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+    seq = ''
+    for line in lines:
+        if not line.startswith('>'):
+            seq += line.strip()
+    return seq.upper()
+
+
+def write_results_csv(filepath, file_seq1, file_seq2, best_score, best_start, best_matched_line, aligned_s2_line):
+    """write alignment results to CSV file"""
+    # convert to relative paths if they are absolute
+    try:
+        rel_file1 = Path(file_seq1).relative_to(Path.cwd())
+    except ValueError:
+        rel_file1 = Path(file_seq1).name
+    
+    try:
+        rel_file2 = Path(file_seq2).relative_to(Path.cwd())
+    except ValueError:
+        rel_file2 = Path(file_seq2).name
+    
+    with open(filepath, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["file 1 is:", str(rel_file1)])
+        writer.writerow([])  # empty row
+        writer.writerow(["file 2 is:", str(rel_file2)])
+        writer.writerow([])  # empty row
+        writer.writerow(["best score is:", best_score])
+        writer.writerow([])  # empty row
+        writer.writerow(["start position is:", best_start])
+        writer.writerow([])  # empty row
+        writer.writerow(["best matched line is:", best_matched_line])
+        writer.writerow([])  # empty row
+        writer.writerow(["aligned s2 line is:", aligned_s2_line])
+
+
+def default_arguments():
+    
+    # define default files using relative paths from script location
+    default_file1 = data_dir / "407228412.fasta"
+    default_file2 = data_dir / "407228326.fasta"
+    
+    if len(sys.argv) == 3:
+        file_seq1 = sys.argv[1]
+        file_seq2 = sys.argv[2]
+    elif len(sys.argv) == 1:
+        # use default files
+        file_seq1 = str(default_file1.resolve())
+        file_seq2 = str(default_file2.resolve())
+    else:
+        print("Usage: python3 align_seqs_fasta.py [seq1.fasta seq2.fasta]")
+        print(f"If no files provided, defaults to {default_file1} and {default_file2}")
+        sys.exit(1)
+    
+    # check if files exist
+    if not Path(file_seq1).exists():
+        print(f"Error: File not found: {file_seq1}")
+        sys.exit(1)
+    if not Path(file_seq2).exists():
+        print(f"Error: File not found: {file_seq2}")
+        sys.exit(1)
+    
+    # read sequences using read_fasta
+    s1 = read_fasta(file_seq1)
+    s2 = read_fasta(file_seq2)
+    
+    return file_seq1, file_seq2, s1, s2
+
+
+# scoring alignment
+def calculate_score(s1: str, s2: str, start: int) -> Tuple[int, str]:
+    
+    # ensure s1 is longer than s2
+    l1 = len(s1)
+    l2 = len(s2)
+    if l1 >= l2:
+        s1 = s1
+        s2 = s2
+    else:
+        s1 = s2
+        s2 = s1
+        l1, l2 = l2, l1  # swap the two lengths
+
+    score = 0
+    matched_chars: List[str] = []
+
+    for i, base in enumerate(s2):
+        j = i + start
+        if j >= l1:
+            break  # no further overlap
+        
+        # check match and update both score and matched_chars
+        is_match = (s1[j] == base)
+        matched_chars.append("*" if is_match else "-")
+        score += is_match
+
+    return score, ("." * start) + "".join(matched_chars)
+
+#find which is the best alignment by looping through all possible start positions in seq1
+def best_alignment(seq1: str, seq2: str) -> Tuple[int, int, str, str]:
+    """
+    find the best placement of seq2 (short) along seq1 (long).
+    if multiple positions have the same best score, keep the first one.
+
+    returns:
+      best_score: maximum number of matches
+      best_start: offset position with best score
+      best_matched_line: match pattern with '*' (match) and '-' (mismatch)
+      aligned_s2_line: seq2 with leading dots showing offset
+    """
+    # find best alignment using max() - keeps first occurrence of best score
+    find_best= max(
+        (calculate_score(seq1, seq2, start) + (start,) for start in range(len(seq1))),
+        key=lambda x: x[0]  # compare by score (first element)
+    )
+    best_score, best_matched_line, best_start = find_best
+
+    aligned_s2_line = ("." * best_start) + seq2
+    print(best_score, "\n", best_start, "\n", best_matched_line, "\n", aligned_s2_line)
+    return best_score, best_start, best_matched_line, aligned_s2_line
+
+
+
+# run alignment and print results
+def run_alignment(file_seq1: str, file_seq2: str, s1: str, s2: str):
+    
+    best_score, best_start, matched_line, aligned_s2_line = best_alignment(s1, s2)
+    
+    print("\n=== Alignment summary ===")
+
+    print("\nAlignment (matches='*', leading '.' shows the offset):")
+
+    print("Best matched line is:", matched_line)
+    print("Aligned seq2 line is:", aligned_s2_line)
+    print(f"\nBest score: {best_score} | Start position: {best_start}")
+
+    # write CSV
+    os.makedirs(results_dir, exist_ok=True)
+    csv_path = results_dir / "Alignment_results.csv"
+    write_results_csv(csv_path, file_seq1, file_seq2, best_score, best_start, matched_line, aligned_s2_line)
+    print(f"\nResults saved to: {csv_path}")  
+
+# main function
+def main():
+    file_seq1, file_seq2, s1, s2 = default_arguments()
+    run_alignment(file_seq1, file_seq2, s1, s2)
+
+
+if __name__ == "__main__":
+    main()
+**********
+
+Run metadata:
+  Command: cd "groupwork 1/code" && python3 align_seqs_fasta.py
+  CWD: groupwork 1/code
+  Exit code: 0
+  Runtime (s): 1.00
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+545 
+ 76 
+ ............................................................................-**----------------*---*-----*--------*-*---***----*----*-*-*----*-*****-*--***--**-*-*-------**-----*-*--*---*------*-*-------*--*-*-*--*------*-*---*------*----------*-----**---**--*-*-*----*--**----------*---**-------------*---*----**-**--*----*----*---------**-----------------*****-----*------*-***----*-**---------*-*-*--*-*-*-*--*-*----------*-------------------*---*---*------*--*-----**----**----**-*--*-
+**********
+No errors.
+======================================================================
+Script: oaks_debugme.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""
+Filters oak species from CSV data based on genus name matching.
+
+This script reads a CSV file containing taxa data and extracts only the oak
+species (genus Quercus) using fuzzy string matching to handle minor typos.
+
+Author: Anaga Ambady (aa6725@ic.ac.uk)
+Version: 1.0.0
+Date: Oct 2025
+"""
+
+__author__ = 'Anaga Ambady (aa6725@ic.ac.uk)'
+__version__ = '1.0.0'
+
+import csv
+import sys
+import doctest
+import difflib
+
+
+def is_an_oak(name):
+    """Returns True if name starts with 'quercus' or is close to it (fuzzy matching)
+   
+    >>> is_an_oak('Fagus sylvatica')
+    False
+    >>> is_an_oak('Quercus')
+    True
+    >>> is_an_oak('Pinus')
+    False
+    >>> is_an_oak('quercus ')
+    True
+    >>> is_an_oak('quercuss')
+    True
+    >>> is_an_oak('Quercuss')
+    True
+    >>> is_an_oak('Quercus robur')
+    True
+    >>> is_an_oak('quercus ilex')
+    True
+    """ 
+    # Extract genus name (first word) and normalize
+    genus = name.strip().split()[0].lower()
+    
+    # Use fuzzy matching to allow for minor typos
+    # A ratio > 0.8 means high similarity to 'quercus'
+    similarity = difflib.SequenceMatcher(None, genus, 'quercus').ratio()
+    return similarity > 0.8
+
+
+def main(argv): 
+    with open('../data/TestOaksData.csv', 'r') as f, \
+         open('../data/JustOaksData.csv', 'w', newline='') as g:
+        
+        taxa = csv.reader(f) 
+        header = next(taxa)  # Skip header row
+        
+        csvwrite = csv.writer(g)
+        csvwrite.writerow(header)  # Write header to output file
+        
+        oaks_count = 0
+        
+        for row in taxa:
+            if not row:  # Skip empty rows
+                continue
+                
+            genus = row[0].strip()
+            print(f"The genus is: {genus}")
+            
+            if is_an_oak(genus):
+                print('FOUND AN OAK!\n')
+                csvwrite.writerow(row)
+                oaks_count += 1
+        
+        print(f"\nTotal oaks found: {oaks_count}")
+    
+    return 0
+
+    
+if __name__ == "__main__":
+    status = main(sys.argv)
+    print("\nRunning doctests...\n")
+    doctest.testmod(verbose=True)
+**********
+
+Run metadata:
+  Command: cd "groupwork 1/code" && python3 oaks_debugme.py
+  CWD: groupwork 1/code
+  Exit code: 0
+  Runtime (s): 0.04
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+The genus is: Quercus
+FOUND AN OAK!
+
+The genus is: Fraxinus
+The genus is: Pinus
+The genus is: Quercus
+FOUND AN OAK!
+
+The genus is: Quercus
+FOUND AN OAK!
+
+
+Total oaks found: 3
+
+Running doctests...
+
+Trying:
+    is_an_oak('Fagus sylvatica')
+Expecting:
+    False
+ok
+Trying:
+    is_an_oak('Quercus')
+Expecting:
+    True
+ok
+Trying:
+    is_an_oak('Pinus')
+Expecting:
+    False
+ok
+Trying:
+    is_an_oak('quercus ')
+Expecting:
+    True
+ok
+Trying:
+    is_an_oak('quercuss')
+Expecting:
+    True
+ok
+Trying:
+    i
+**********
+No errors.
+======================================================================
+Script: PP_Regress_loc.R
+
+Contents:
+
+**********
+#!/usr/bin/env Rscript
+require(dplyr)
+
+MyDF <- read.csv("../data/EcolArchives-E089-51-D1.csv")
+
+MyDF <- na.omit(MyDF[ , c("Predator.mass", "Prey.mass",
+                          "Predator.lifestage",
+                          "Type.of.feeding.interaction",
+                          "Location")])
+
+locations <- unique(MyDF$Location) #only separate by location
+#create result data.frame (class)
+regress_results <- data.frame(
+  Location = character(),
+  Slope = numeric(),
+  Intercept = numeric(),
+  R.squared = numeric(),
+  F.statistic = numeric(),
+  p.value = numeric(),
+  stringsAsFactors = FALSE
+)
+
+#the loop
+for (loc in locations) {
+  
+  subset_data <- subset(MyDF, Location == loc)
+  
+  if (nrow(subset_data) > 2) {  # Only regress if more than 2 points, 1point is not enough
+    
+    # Linear regression, no log transformation
+    lm_result <- lm(Predator.mass ~ Prey.mass, data = subset_data)
+    lm_summary <- summary(lm_result)
+    
+    slope     <- lm_summary$coefficients[2, 1]
+    intercept <- lm_summary$coefficients[1, 1]
+    r_squared <- lm_summary$r.squared
+    f_stat    <- lm_summary$fstatistic[1]
+    p_val     <- pf(f_stat,
+                    lm_summary$fstatistic[2],
+                    lm_summary$fstatistic[3],
+                    lower.tail = FALSE)
+    
+    # Append results
+    regress_results <- rbind(
+      regress_results,
+      data.frame(
+        Location = loc,
+        Slope = slope,
+        Intercept = intercept,
+        R.squared = r_squared,
+        F.statistic = f_stat,
+        p.value = p_val
+      )
+    )
+  }
+}
+
+#save as csv
+write.csv(regress_results,
+          "../results/PP_Regress_Location_Results.csv",
+          row.names = FALSE)
+**********
+
+Run metadata:
+  Command: cd "groupwork2/code" && Rscript --vanilla --slave PP_Regress_loc.R
+  CWD: groupwork2/code
+  Exit code: 0
+  Runtime (s): 0.51
+  Timed out: No
+  Stderr bytes: 242
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+Warnings/Notes:
+**********
+Loading required package: dplyr
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+**********
+======================================================================
+Script: TAutoCorr.R
+
+Contents:
+
+**********
+if (!requireNamespace("here", quietly = TRUE)) {
+  stop("Package 'here' is required. Install with install.packages('here')")
+}
+library(here)
+
+data_path <- here::here("groupwork2", "data", "KeyWestAnnualMeanTemperature.RData")
+obj_name  <- load(data_path)
+dat       <- get(obj_name)
+
+temps <- dat$Temp
+
+obs_cor <- cor(temps[-length(temps)], temps[-1])
+
+set.seed(0)
+n_perm   <- 10000
+
+perm_cor <- numeric(n_perm)
+
+for (i in 1:n_perm) {
+  perm_temps   <- sample(temps)
+  perm_cor[i]  <- cor(perm_temps[-length(perm_temps)],
+                      perm_temps[-1])
+}
+
+p_value <- mean(perm_cor >= obs_cor)
+
+cat("Observed correlation between successive years:",
+    round(obs_cor, 3), "\n")
+
+cat("Approximate permutation p-value (one-sided):",
+    p_value, "\n")
+
+if (p_value < 0.05) {
+  cat("Conclusion: At the 0.05 level, successive years' ",
+      "temperatures appear to be significantly positively ",
+      "correlated.\n", sep = "")
+} else {
+  cat("Conclusion: At the 0.05 level, we do NOT find strong ",
+      "evidence that successive years' temperatures are ",
+      "positively correlated.\n", sep = "")
+}
+
+results_path <- here::here("groupwork2", "results", "TAutoCorr_results.txt")
+
+out_lines <- c(
+  "Autocorrelation in Key West annual mean temperature",
+  paste("Observed correlation between successive years:",
+        round(obs_cor, 3)),
+  paste("Approximate permutation p-value (one-sided):",
+        p_value)
+)
+
+if (p_value < 0.05) {
+  out_lines <- c(out_lines,
+                 "Conclusion (alpha = 0.05): successive years' temperatures are significantly positively correlated.")
+} else {
+  out_lines <- c(out_lines,
+                 "Conclusion (alpha = 0.05): successive years' temperatures are not significantly positively correlated.")
+}
+
+writeLines(out_lines, con = results_path)
+
+cat("Results written to", results_path, "\n")
+
+png(filename = here::here("groupwork2", "results", "TAutoCorr_null_hist.png"))
+hist(perm_cor,
+     main = "Permutation distribution of correlation",
+     xlab = "Correlation (permuted data)")
+abline(v = obs_cor, lwd = 2)
+dev.off()
+
+**********
+
+Run metadata:
+  Command: cd "groupwork2/code" && Rscript --vanilla --slave TAutoCorr.R
+  CWD: groupwork2/code
+  Exit code: 0
+  Runtime (s): 0.42
+  Timed out: No
+  Stderr bytes: 98
+
+Stdout (first 500 chars):
+
+**********
+Observed correlation between successive years: 0.326 
+Approximate permutation p-value (one-sided): 5e-04 
+Conclusion: At the 0.05 level, successive years' temperatures appear to be significantly positively correlated.
+Results written to /home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos_groups/04_Dashing_Dingos/groupwork2/results/TAutoCorr_results.txt 
+null device 
+          1 
+
+**********
+Warnings/Notes:
+**********
+here() starts at /home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos_groups/04_Dashing_Dingos
+
+**********
+======================================================================
+Script: compileLaTeX.sh
+
+Contents:
+
+**********
+#!/bin/bash
+# Compile LaTeX document
+
+# Default to firstExample.tex if no argument is provided
+if [ $# -eq 0 ]; then
+    filename="firstExample"
+else
+    if [[ $1 == *.tex ]]; then
+        filename=${1%.tex} # Remove file extension
+    else
+        filename=$1 # Use the provided name
+    fi
+fi
+
+if [[ ! -f "$filename.tex" ]]; then
+    echo "Error: File $filename.tex not found"
+    exit 1
+fi
+
+pdflatex $filename.tex
+bibtex $filename
+pdflatex $filename.tex
+pdflatex $filename.tex
+evince $filename.pdf &
+
+## Cleanup
+rm *.aux
+rm *.log
+rm *.bbl
+rm *.blg
+**********
+
+Run metadata:
+  Command: cd "groupwork2/code" && bash compileLaTeX.sh
+  CWD: groupwork2/code
+  Exit code: 1
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Error: File firstExample.tex not found
+
+**********
+Errors:
+**********
+No stderr output captured.
+**********
+======================================================================
+GROUPWORK FUNCTIONAL CORRECTNESS (Criterion 2)
+======================================================================
+
+Scripts executed: 6
+Scripts successful: 5
+Scripts with errors: 1
+Success rate: 83.3%
+
+Expected outputs/files check: not configured (no expected files list provided).
+
+Scripts that error on a clean run are treated as non-runnable under Criterion 2.
+
+Criterion evidence snapshot:
+  Criterion 2:
+  - Scripts executed: 6
+  - Scripts with errors: 1
+
+======================================================================
+SCRIPT EXECUTION RESULTS
+======================================================================
+The following sections show each script as executed, plus its output and errors.
+
+======================================================================
+Script: ConcatenateTwoFiles.sh
+
+Contents:
+
+**********
+#!/bin/bash
+cat $1 > $3
+cat $2 >> $3
+echo "Merged File is:"
+cat $3
+
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash ConcatenateTwoFiles.sh
+  CWD: week1/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 110
+
+Stdout (first 500 chars):
+
+**********
+Merged File is:
+
+**********
+Warnings/Notes:
+**********
+ConcatenateTwoFiles.sh: line 2: $3: ambiguous redirect
+ConcatenateTwoFiles.sh: line 3: $3: ambiguous redirect
+
+**********
+======================================================================
+Script: Countlines.sh
+
+Contents:
+
+**********
+#!/bin/bash
+NumLines=`wc -l < $1`
+echo "The file $1 has $NumLines lines"
+echo
+
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash Countlines.sh
+  CWD: week1/code
+  Exit code: 0
+  Runtime (s): 0.00
+  Timed out: No
+  Stderr bytes: 46
+
+Stdout (first 500 chars):
+
+**********
+The file  has  lines
+
+
+**********
+Warnings/Notes:
+**********
+Countlines.sh: line 2: $1: ambiguous redirect
+
+**********
+======================================================================
+Script: boilerplate.sh
+
+Contents:
+
+**********
+#!/bin/sh
+# Author: Yian.Liu Yian.Liu25@imperial.ac.uk
+# Script: boilerplate.sh
+# Desc: simple boilerplate for shell scripts
+# Arguments: none
+# Date: Oct 2025
+
+echo -e "\nThis is a shell script! \n"
+
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash boilerplate.sh
+  CWD: week1/code
+  Exit code: 0
+  Runtime (s): 0.00
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+
+This is a shell script! 
+
+
+**********
+No errors.
+======================================================================
+Script: csvtospace.sh
+
+Contents:
+
+**********
+#/bin/bash
+# Author: Yian.Liu25@imperial.ac.uk
+# Script: tabtocsv.sh
+# Date: Oct 2025
+
+# Check if the user gave an input file name
+if [ $# -lt 1 ]; then
+  echo "bash csvtospace.sh"
+  exit 1
+fi
+
+# Save the first argument (the file name) in a variable
+infile="$1"
+
+# Check if the file exists
+if [ ! -f "$infile" ]; then
+  echo "Error: file not found: $infile"
+  exit 1
+fi
+
+outfile="${infile}_space.txt"
+
+# Use 'tr' to replace commas with spaces
+echo "Changing commas to spaces in $infile ..."
+tr ',' ' ' < "$infile" > "$outfile"
+
+echo "Done! Created file: $outfile"
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash csvtospace.sh
+  CWD: week1/code
+  Exit code: 1
+  Runtime (s): 0.00
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+bash csvtospace.sh
+
+**********
+Errors:
+**********
+No stderr output captured.
+**********
+======================================================================
+Script: tabtocsv.sh
+
+Contents:
+
+**********
+#!/bin/sh
+# Author: Yian.Liu25@imperial.ac.uk
+# Script: tabtocsv.sh
+# Date: Oct 2025
+# Check if the user gave an input file name
+if [ $# -lt 1 ]; then
+  echo "bash tabtocsv.sh"
+  exit 1
+fi
+
+# Save the first argument (the file name) in a variable
+infile="$1"
+
+# Check if the file really exists
+if [ ! -f "$infile" ]; then
+  echo "Error: file not found: $infile"
+  exit 1
+fi
+
+# Use 'tr' to replace TABs with commas and save to a new file
+echo "Changing TABs to commas in $infile ..."
+tr '\t' ',' < "$infile" > "$infile.csv"
+
+echo "Done! Created file: $infile.csv"
+
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash tabtocsv.sh
+  CWD: week1/code
+  Exit code: 1
+  Runtime (s): 0.00
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+bash tabtocsv.sh
+
+**********
+Errors:
+**********
+No stderr output captured.
+**********
+======================================================================
+Script: tiff2png.sh
+
+Contents:
+
+**********
+#!/bin/bash
+for f in *.tif;
+do
+  echo "Converting $f"
+  convert "$f" "$(basename "$f" .tif).png"
+done
+
+**********
+
+Run metadata:
+  Command: cd "week1/code" && bash tiff2png.sh
+  CWD: week1/code
+  Exit code: 0
+  Runtime (s): 0.04
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Converting image1.tif
+Converting image2.tif
+
+**********
+No errors.
+======================================================================
+Script: MyExampleScript.py
+
+Contents:
+
+**********
+
+def foo(x):
+    x *= x # same as x = x*x
+    print(x)
+
+foo(2)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 MyExampleScript.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+4
+
+**********
+No errors.
+======================================================================
+Script: align_seqs.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+"""
+
+A very basic DNA aligner:
+- read two sequences from a tiny CSV/TXT file
+- slide the shorter over the longer
+- choose the start position with the highest match score
+- print and save the best alignment
+
+"""
+
+INPUT_PATH  = "../data/two_seqs.csv"
+OUTPUT_PATH = "../results/best_alignment.txt" 
+
+def read_two_seqs(path):
+    items = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            # If there is a comma in the line, split it by the comma first
+            parts = [p.strip() for p in line.split(",") if p.strip()]
+            items.extend(parts if parts else [line])
+
+            if len(items) < 2:
+                raise ValueError(f"Fewer than two sequences in the input file：{path}")
+
+    # Take only the first two, remove spaces and capitalize them
+    s1 = items[0].replace(" ", "").upper()
+    s2 = items[1].replace(" ", "").upper()
+    return s1, s2
+
+def calculate_score(longer, shorter, start):
+    """Append shorter to longer starting from start and return (score, matching marker line)."""
+    score = 0
+    marks = []
+    for i, base in enumerate(shorter):
+        j = start + i
+        if j >= len(longer):
+            break
+        if longer[j] == base:
+            score += 1
+            marks.append("|")   # Matches are marked with a vertical line
+        else:
+            marks.append(" ")
+    return score, (" " * start) + "".join(marks)
+
+def best_alignment(seq1, seq2):
+        # Make "longer" always the longer line, 
+        # and use "top" to save the "top line" when displaying.”
+    if len(seq2) > len(seq1):
+        longer, shorter = seq2, seq1
+        top = seq2
+    else:
+        longer, shorter = seq1, seq2
+        top = seq1
+
+    best_score = -1
+    best_start = 0
+    best_matchline = ""
+    best_align = ""
+
+    for start in range(len(longer)):
+        score, matchline = calculate_score(longer, shorter, start)
+        if score > best_score:
+            best_score = score
+            best_start = start
+            best_matchline = matchline
+            best_align = ("." * start) + shorter 
+
+    lines = [
+        "Best alignment",
+        "--------------",
+        f"Score : {best_score}",
+        f"Start : {best_start}",
+        "",
+        top,
+        best_matchline,
+        best_align,
+        ""
+    ]
+    return "\n".join(lines)
+
+
+def main():
+    # Read Sequence
+    s1, s2 = read_two_seqs(INPUT_PATH)
+    # Calculate the best alignment
+    report = best_alignment(s1, s2)
+    # Print
+    print(report)
+    # Write file
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(report)
+    print(f"Saved to: {OUTPUT_PATH}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 align_seqs.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Best alignment
+--------------
+Score : 3
+Start : 0
+
+GATTACA
+|  | | 
+GCATGCU
+
+Saved to: ../results/best_alignment.txt
+
+**********
+No errors.
+======================================================================
+Script: basic_csv.py
+
+Contents:
+
+**********
+import csv
+
+# Read a file containing:
+# 'Species','Infraorder','Family','Distribution','Body mass male (Kg)'
+with open('../data/testcsv.csv','r') as f:
+    csvread = csv.reader(f)
+    temp = []
+    for row in csvread:
+        temp.append(tuple(row))
+        print(row)
+        print("The species is", row[0])
+
+# write a file containing only species name and Body mass
+with open('../data/testcsv.csv','r') as f:
+    with open('../data/bodymass.csv','w') as g:
+        csvread = csv.reader(f)
+        csvwrite = csv.writer(g)
+        for row in csvread:
+            print(row)
+            csvwrite.writerow([row[0], row[4]])
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 basic_csv.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.02
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+['Species', 'Infraorder', 'Family', 'Distribution', 'Body mass male (Kg)']
+The species is Species
+['Daubentonia_madagascariensis', 'Chiromyiformes ', 'Daubentoniidae', 'Madagascar', '2.7']
+The species is Daubentonia_madagascariensis
+['Allocebus_trichotis', 'Lemuriformes', 'Cheirogaleidae', 'Madagascar', '0.1']
+The species is Allocebus_trichotis
+['Avahi_laniger', 'Lemuriformes', 'Indridae', 'America', '1.03']
+The species is Avahi_laniger
+['Avahi_occidentalis', 'Lemuriformes', 'Indridae', 'Madagas
+**********
+No errors.
+======================================================================
+Script: basic_io1.py
+
+Contents:
+
+**********
+#############################
+# FILE INPUT
+#############################
+# Open a file for reading
+with open('../sandbox/test.txt', 'r') as f:
+    # use "implicit" for loop:
+    # if the object is a file, python will cycle over lines
+    for line in f:
+        print(line)
+
+# Once you drop out of the with, the file is automatically closed
+
+# Same example, skip blank lines
+with open('../sandbox/test.txt', 'r') as f:
+    for line in f:
+        if len(line.strip()) > 0:
+            print(line)
+
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 basic_io1.py
+  CWD: week2/code
+  Exit code: 1
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 329
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos/YianLiu_yl14225/week2/code/basic_io1.py", line 5, in <module>
+    with open('../sandbox/test.txt', 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/test.txt'
+
+**********
+Missing input files detected:
+  ✗ ../sandbox/test.txt
+
+======================================================================
+Script: basic_io2.py
+
+Contents:
+
+**********
+#############################
+# FILE OUTPUT
+#############################
+# Save the elements of a list to a file
+list_to_save = range(100)
+
+f = open('../sandbox/testout.txt','w')
+for i in list_to_save:
+    f.write(str(i) + '\n')  # 每个数字写一行
+
+f.close()
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 basic_io2.py
+  CWD: week2/code
+  Exit code: 1
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 328
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos/YianLiu_yl14225/week2/code/basic_io2.py", line 7, in <module>
+    f = open('../sandbox/testout.txt','w')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/testout.txt'
+
+**********
+Missing input files detected:
+  ✗ ../sandbox/testout.txt
+
+======================================================================
+Script: basic_io3.py
+
+Contents:
+
+**********
+#############################
+# STORING OBJECTS
+#############################
+# To save an object (even complex) for later use
+my_dictionary = {"a key": 10, "another key": 11}
+
+import pickle
+
+f = open('../sandbox/testp.p','wb')  # 注意二进制写
+pickle.dump(my_dictionary, f)
+f.close()
+
+# 读取回来
+f = open('../sandbox/testp.p','rb')
+another_dictionary = pickle.load(f)
+f.close()
+
+print(another_dictionary)
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 basic_io3.py
+  CWD: week2/code
+  Exit code: 1
+  Runtime (s): 0.02
+  Timed out: No
+  Stderr bytes: 340
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+Errors:
+**********
+Traceback (most recent call last):
+  File "/home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos/YianLiu_yl14225/week2/code/basic_io3.py", line 9, in <module>
+    f = open('../sandbox/testp.p','wb')  # 注意二进制写
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../sandbox/testp.p'
+
+**********
+Missing input files detected:
+  ✗ ../sandbox/testp.p
+
+======================================================================
+Script: boilerplate.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Description of this program or application.
+You can use several lines"""
+
+__appname__ = '[123]'
+__author__ = 'Yian.Liu25@imperial.ac.uk'
+__version__ = '0.0.1'
+__license__ = "License for this code/program"
+
+## imports ##
+import sys # module to interface our program with the operating system
+
+## constants ##
+
+
+## functions ##
+def main(argv):
+    """ Main entry point of the program """
+    print('This is a boilerplate') # NOTE: indented using two tabs or 4 spaces
+    return 0
+
+if __name__ == "__main__": 
+    """Makes sure the "main" function is called from command line"""  
+    status = main(sys.argv)
+    sys.exit(status)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 boilerplate.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+This is a boilerplate
+
+**********
+No errors.
+======================================================================
+Script: cfexercises1.py
+
+Contents:
+
+**********
+
+def foo_1(x):
+    return x ** 0.5
+
+def foo_2(x, y):
+    if x > y:
+        return x
+    return y
+
+def foo_3(x, y, z):
+    if x > y:
+        x, y = y, x
+    if x > z:
+        x, z = z, x
+    if y > z:
+        y, z = z, y
+    return [x, y, z]
+
+def foo_4(x):
+    result = 1
+    for i in range(1, x + 1):
+        result = result * i
+    return result
+
+def foo_5(x):
+    if x < 0:
+        raise ValueError("x must be non-negative")
+    if x in (0, 1):
+        return 1
+    return x * foo_5(x - 1)
+     
+def foo_6(x):
+    if x < 0:
+        raise ValueError("x must be non-negative")
+    facto = 1
+    while x >= 1:
+        facto *= x
+        x -= 1
+    return facto
+
+import sys
+
+def main (argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+
+    print("foo_1(9)        ->", foo_1(9))
+    print("foo_2(10, 3)    ->", foo_2(10, 3))
+    print("foo_3(9, 2, 5)  ->", foo_3(9, 2, 5))
+    print("foo_4(5)        ->", foo_4(5))
+    print("foo_5(6)        ->", foo_5(6))
+    print("foo_6(7)        ->", foo_6(7))
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 cfexercises1.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+foo_1(9)        -> 3.0
+foo_2(10, 3)    -> 10
+foo_3(9, 2, 5)  -> [2, 5, 9]
+foo_4(5)        -> 120
+foo_5(6)        -> 720
+foo_6(7)        -> 5040
+
+**********
+No errors.
+======================================================================
+Script: cfexercises2.py
+
+Contents:
+
+**********
+
+########################
+def hello_1(x):
+    for j in range(x):
+        if j % 3 == 0:
+            print('hello')
+    print(' ')
+
+hello_1(12)
+
+########################
+def hello_2(x):
+    for j in range(x):
+        if j % 5 == 3:
+            print('hello')
+        elif j % 4 == 3:
+            print('hello')
+    print(' ')
+
+hello_2(12)
+
+########################
+def hello_3(x, y):
+    for i in range(x, y):
+        print('hello')
+    print(' ')
+
+hello_3(3, 17)
+
+########################
+def hello_4(x):
+    while x != 15:
+        print('hello')
+        x = x + 3
+    print(' ')
+
+hello_4(0)
+
+########################
+def hello_5(x):
+    while x < 100:
+        if x == 31:
+            for k in range(7):
+                print('hello')
+        elif x == 18:
+            print('hello')
+        x = x + 1
+    print(' ')
+
+hello_5(12)
+
+# WHILE loop with BREAK
+def hello_6(x, y):
+    while x: # while x is True
+        print("hello! " + str(y))
+        y += 1 # increment y by 1 
+        if y == 6:
+            break
+    print(' ')
+
+hello_6 (True, 0)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 cfexercises2.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+ 
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+ 
+hello! 0
+hello! 1
+hello! 2
+hello! 3
+hello! 4
+hello! 5
+ 
+
+**********
+No errors.
+======================================================================
+Script: control_flow.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Some functions exemplifying the use of control statements"""
+#docstrings are considered part of the running code (normal comments are
+#stripped). Hence, you can access your docstrings at run time.
+__author__ = 'Samraat Pawar (s.pawar@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+import sys
+
+def even_or_odd(x=0): # if not specified, x should take value 0.
+
+    """Find whether a number x is even or odd."""
+    if x % 2 == 0: #The conditional if
+        return f"{x} is Even!"
+    return f"{x} is Odd!"
+
+def largest_divisor_five(x=120):
+    """Find which is the largest divisor of x among 2,3,4,5."""
+    largest = 0
+    if x % 5 == 0:
+        largest = 5
+    elif x % 4 == 0: #means "else, if"
+        largest = 4
+    elif x % 3 == 0:
+        largest = 3
+    elif x % 2 == 0:
+        largest = 2
+    else: # When all other (if, elif) conditions are not met
+        return f"No divisor found for {x}!" # Each function can return a value or a variable.
+    return f"The largest divisor of {x} is {largest}"
+
+def is_prime(x=70):
+    """Find whether an integer is prime."""
+    for i in range(2, x): #  "range" returns a sequence of integers
+        if x % i == 0:
+            print(f"{x} is not a prime: {i} is a divisor") 
+            return False
+    print(f"{x} is a prime!")
+    return True 
+
+def find_all_primes(x=22):
+    """Find all the primes up to x"""
+    allprimes = []
+    for i in range(2, x + 1):
+        if is_prime(i):
+            allprimes.append(i)
+    print(f"There are {len(allprimes)} primes between 2 and {x}")
+    return allprimes
+      
+def main(argv):
+    print(even_or_odd(22))
+    print(even_or_odd(33))
+    print(largest_divisor_five(120))
+    print(largest_divisor_five(121))
+    print(is_prime(60))
+    print(is_prime(59))
+    print(find_all_primes(100))
+    return 0
+
+if (__name__ == "__main__"):
+    status = main(sys.argv)
+    sys.exit(status)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 control_flow.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+22 is Even!
+33 is Odd!
+The largest divisor of 120 is 5
+No divisor found for 121!
+60 is not a prime: 2 is a divisor
+False
+59 is a prime!
+True
+2 is a prime!
+3 is a prime!
+4 is not a prime: 2 is a divisor
+5 is a prime!
+6 is not a prime: 2 is a divisor
+7 is a prime!
+8 is not a prime: 2 is a divisor
+9 is not a prime: 3 is a divisor
+10 is not a prime: 2 is a divisor
+11 is a prime!
+12 is not a prime: 2 is a divisor
+13 is a prime!
+14 is not a prime: 2 is a divisor
+15 is not a prime: 3 is a divisor
+16 is
+**********
+No errors.
+======================================================================
+Script: debugme.py
+
+Contents:
+
+**********
+def buggyfunc(x):
+    y = x
+    for i in range(x):
+        try: 
+            y = y-1
+            z = x/y
+        except ZeroDivisionError:
+            print(f"The result of dividing a number by zero is undefined")
+        except:
+            print(f"This didn't work;{x = }; {y = }")
+        else:
+            print(f"OK; {x = }; {y = }, {z = };")
+    return z
+
+buggyfunc(20)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 debugme.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+OK; x = 20; y = 19, z = 1.0526315789473684;
+OK; x = 20; y = 18, z = 1.1111111111111112;
+OK; x = 20; y = 17, z = 1.1764705882352942;
+OK; x = 20; y = 16, z = 1.25;
+OK; x = 20; y = 15, z = 1.3333333333333333;
+OK; x = 20; y = 14, z = 1.4285714285714286;
+OK; x = 20; y = 13, z = 1.5384615384615385;
+OK; x = 20; y = 12, z = 1.6666666666666667;
+OK; x = 20; y = 11, z = 1.8181818181818181;
+OK; x = 20; y = 10, z = 2.0;
+OK; x = 20; y = 9, z = 2.2222222222222223;
+OK; x = 20; y = 8, z = 2.5;
+OK; x = 20; y = 7,
+**********
+No errors.
+======================================================================
+Script: dictionary.py
+
+Contents:
+
+**********
+taxa = [ ('Myotis lucifugus','Chiroptera'),
+         ('Gerbillus henleyi','Rodentia',),
+         ('Peromyscus crinitus', 'Rodentia'),
+         ('Mus domesticus', 'Rodentia'),
+         ('Cleithrionomys rutilus', 'Rodentia'),
+         ('Microgale dobsoni', 'Afrosoricida'),
+         ('Microgale talazaci', 'Afrosoricida'),
+         ('Lyacon pictus', 'Carnivora'),
+         ('Arctocephalus gazella', 'Carnivora'),
+         ('Canis lupus', 'Carnivora'),
+        ]
+
+# Write a python script to populate a dictionary called taxa_dic derived from
+# taxa so that it maps order names to sets of taxa and prints it to screen.
+# 
+# An example output is:
+#  
+# 'Chiroptera' : set(['Myotis lucifugus']) ... etc. 
+# OR, 
+# 'Chiroptera': {'Myotis  lucifugus'} ... etc
+
+#### Your solution here #### 
+
+taxa_dic = {}
+
+for species, order in taxa:
+    taxa_dic.setdefault(order, set()).add(species)
+
+print("Loop dict:")
+for order in sorted(taxa_dic):
+    print(f"{order}: {sorted(taxa_dic[order])}")
+
+
+# Now write a list comprehension that does the same (including the printing after the dictionary has been created)  
+ 
+#### Your solution here #### 
+
+orders = {order for _, order in taxa} 
+taxa_dic_comp = {
+    order: {sp for sp, od in taxa if od == order}
+    for order in orders
+}
+
+print("Comprehension dict:")
+for order in sorted(taxa_dic_comp):
+    print(f"{order}: {sorted(taxa_dic_comp[order])}")
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 dictionary.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Loop dict:
+Afrosoricida: ['Microgale dobsoni', 'Microgale talazaci']
+Carnivora: ['Arctocephalus gazella', 'Canis lupus', 'Lyacon pictus']
+Chiroptera: ['Myotis lucifugus']
+Rodentia: ['Cleithrionomys rutilus', 'Gerbillus henleyi', 'Mus domesticus', 'Peromyscus crinitus']
+Comprehension dict:
+Afrosoricida: ['Microgale dobsoni', 'Microgale talazaci']
+Carnivora: ['Arctocephalus gazella', 'Canis lupus', 'Lyacon pictus']
+Chiroptera: ['Myotis lucifugus']
+Rodentia: ['Cleithrionomys rutilus', 'Gerbillus he
+**********
+No errors.
+======================================================================
+Script: lc1.py
+
+Contents:
+
+**********
+birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
+          ('Delichon urbica','House martin',19),
+          ('Junco phaeonotus','Yellow-eyed junco',19.5),
+          ('Junco hyemalis','Dark-eyed junco',19.6),
+          ('Tachycineata bicolor','Tree swallow',20.2),
+         )
+
+#(1) Write three separate list comprehensions that create three different
+# lists containing the latin names, common names and mean body masses for
+# each species in birds, respectively. 
+
+latin_lc = [lat for (lat, _, _) in birds]
+common_lc = [com for (_, com, _) in birds]
+mass_lc   = [mass for (_,  _,  mass) in birds]
+
+print("Latin names  (lc):", latin_lc)
+print("Common names (lc):", common_lc)
+print("Masses (lc)      :", mass_lc)
+
+# (2) Now do the same using conventional loops (you can choose to do this 
+# before 1 !). 
+latin_for, common_for, mass_for = [], [], []
+for lat, com, mass in birds:
+    latin_for.append(lat)
+    common_for.append(com)
+    mass_for.append(mass)
+
+print("Latin names  (for):", latin_for)
+print("Common names (for):", common_for)
+print("Masses (for)      :", mass_for)
+
+# A nice example out out is:
+# Step #1:
+# Latin names:
+# ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+# ... etc.
+ 
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 lc1.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Latin names  (lc): ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+Common names (lc): ['Savannah sparrow', 'House martin', 'Yellow-eyed junco', 'Dark-eyed junco', 'Tree swallow']
+Masses (lc)      : [18.7, 19, 19.5, 19.6, 20.2]
+Latin names  (for): ['Passerculus sandwichensis', 'Delichon urbica', 'Junco phaeonotus', 'Junco hyemalis', 'Tachycineata bicolor']
+Common names (for): ['Savannah sparrow', 'House martin', 'Yellow-eyed junco', '
+**********
+No errors.
+======================================================================
+Script: lc2.py
+
+Contents:
+
+**********
+# Average UK Rainfall (mm) for 1910 by month
+# http://www.metoffice.gov.uk/climate/uk/datasets
+rainfall = (('JAN',111.4),
+            ('FEB',126.1),
+            ('MAR', 49.9),
+            ('APR', 95.3),
+            ('MAY', 71.8),
+            ('JUN', 70.2),
+            ('JUL', 97.1),
+            ('AUG',140.2),
+            ('SEP', 27.0),
+            ('OCT', 89.4),
+            ('NOV',128.4),
+            ('DEC',142.2),
+           )
+
+# (1) Use a list comprehension to create a list of month,rainfall tuples where
+# the amount of rain was greater than 100 mm.
+ 
+over_100_comp = [(m,v) for (m,v) in rainfall if v>100]
+print(" >100mm:", over_100_comp)
+
+# (2) Use a list comprehension to create a list of just month names where the
+# amount of rain was less than 50 mm. 
+
+under_50_comp = [m for (m, v) in rainfall if v < 50] 
+print(" <50mm months:", under_50_comp)
+# (3) Now do (1) and (2) using conventional loops (you can choose to do 
+# this before 1 and 2 !). 
+over_100_loop = []
+under_50_loop = []
+
+for m, v in rainfall:
+    if v > 100:
+        over_100_loop.append((m,v))
+    if v < 50:
+        under_50_loop.append(m)
+
+print(" >100mm:", over_100_loop)
+print(" <50mm months:", under_50_loop)
+# A good example output is:
+#
+# Step #1:
+# Months and rainfall values when the amount of rain was greater than 100mm:
+# [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+# ... etc.
+
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 lc2.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+ >100mm: [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+ <50mm months: ['MAR', 'SEP']
+ >100mm: [('JAN', 111.4), ('FEB', 126.1), ('AUG', 140.2), ('NOV', 128.4), ('DEC', 142.2)]
+ <50mm months: ['MAR', 'SEP']
+
+**********
+No errors.
+======================================================================
+Script: oaks.py
+
+Contents:
+
+**********
+## Finds just those taxa that are oak trees from a list of species
+
+taxa = [ 'Quercus robur',
+         'Fraxinus excelsior',
+         'Pinus sylvestris',
+         'Quercus cerris',
+         'Quercus petraea',
+       ]
+
+def is_an_oak(name):
+    return name.lower().startswith('quercus ')
+
+##Using for loops
+oaks_loops = set()
+for species in taxa:
+    if is_an_oak(species):
+        oaks_loops.add(species)
+print(oaks_loops)
+
+##Using list comprehensions   
+oaks_lc = set([species for species in taxa if is_an_oak(species)])
+print(oaks_lc)
+
+##Get names in UPPER CASE using for loops
+oaks_loops = set()
+for species in taxa:
+    if is_an_oak(species):
+        oaks_loops.add(species.upper())
+print(oaks_loops)
+
+##Get names in UPPER CASE using list comprehensions
+oaks_lc = set([species.upper() for species in taxa if is_an_oak(species)])
+print(oaks_lc)
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 oaks.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+{'Quercus cerris', 'Quercus robur', 'Quercus petraea'}
+{'Quercus cerris', 'Quercus robur', 'Quercus petraea'}
+{'QUERCUS PETRAEA', 'QUERCUS CERRIS', 'QUERCUS ROBUR'}
+{'QUERCUS PETRAEA', 'QUERCUS CERRIS', 'QUERCUS ROBUR'}
+
+**********
+No errors.
+======================================================================
+Script: oaks_debugme.py
+
+Contents:
+
+**********
+import csv
+import sys
+import re
+from pathlib import Path
+
+OAK_RE = re.compile(r'^\s*quercus\b', re.IGNORECASE)
+
+def is_an_oak(name):
+    """Return True if name starts with genus 'Quercus' (word-boundary)."""
+    if not isinstance(name, str):
+        return False
+    return bool(OAK_RE.search(name.strip()))
+
+def main(argv):
+    in_path = Path("../data/TestOaksData.csv")
+    out_path = Path("../results/JustOaksData.csv")
+
+    with in_path.open(newline="", encoding="utf-8") as f, out_path.open("w", newline="", encoding="utf-8") as g:
+        taxa = csv.reader(f)
+        csvwrite = csv.writer(g)
+        for row in taxa:
+            if is_an_oak(row[0]):
+                csvwrite.writerow([row[0], row[1]])
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 oaks_debugme.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.02
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+No errors.
+======================================================================
+Script: oaks_test.py
+
+Contents:
+
+**********
+def is_an_oak(name):
+    """ Returns True if name is starts with 'quercus'
+
+    >>> is_an_oak('Fagus sylvatica')
+    False
+
+    >>> is_an_oak('Quercus robur')
+    True
+
+    # A typo
+    >>> is_an_oak('Quercuss')
+    False
+    """
+    return name.lower().startswith('quercus ')
+
+print(is_an_oak.__doc__)
+
+import doctest
+doctest.testmod()   # Run embedded tests
+
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 oaks_test.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.05
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+ Returns True if name is starts with 'quercus'
+
+    >>> is_an_oak('Fagus sylvatica')
+    False
+
+    >>> is_an_oak('Quercus robur')
+    True
+
+    # A typo
+    >>> is_an_oak('Quercuss')
+    False
+    
+
+**********
+No errors.
+======================================================================
+Script: test_control_flow.py
+
+Contents:
+
+**********
+#!/usr/bin/env python3
+
+"""Some functions exemplifying the use of control statements"""
+
+__author__ = 'Your Name (Your.Name@your.email.address)'
+__version__ = '0.0.1'
+
+import sys
+import doctest # Import the doctest module
+
+def even_or_odd(x=0):
+    """Find whether a number x is even or odd.
+      
+    >>> even_or_odd(10)
+    '10 is Even!'
+    
+    >>> even_or_odd(5)
+    '5 is Odd!'
+        
+    in case of negative numbers, the positive is taken:    
+    >>> even_or_odd(-2)
+    '-2 is Even!'
+    
+    """
+    #Define function to be tested
+    if x % 2 == 0:
+        return f"{x} is Even!"
+    return f"{x} is Odd!"
+
+def main(argv): 
+    print(even_or_odd(22))
+    print(even_or_odd(33))
+    return 0
+
+if (__name__ == "__main__"):
+    status = main(sys.argv)
+
+doctest.testmod()   # To run with embedded tests
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 test_control_flow.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.05
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+22 is Even!
+33 is Odd!
+
+**********
+No errors.
+======================================================================
+Script: tuple.py
+
+Contents:
+
+**********
+birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
+          ('Delichon urbica','House martin',19),
+          ('Junco phaeonotus','Yellow-eyed junco',19.5),
+          ('Junco hyemalis','Dark-eyed junco',19.6),
+          ('Tachycineata bicolor','Tree swallow',20.2),
+        )
+
+# Birds is a tuple of tuples of length three: latin name, common name, mass.
+# write a (short) script to print these on a separate line or output block by
+# species 
+# 
+# A nice example output is:
+# 
+# Latin name: Passerculus sandwichensis Common name: Savannah sparrow Mass: 18.7
+# ... etc.
+
+for latin, common, mass in birds:
+    print(f"Latin name: {latin}  Common name: {common}  Mass: {mass}")
+**********
+
+Run metadata:
+  Command: cd "week2/code" && python3 tuple.py
+  CWD: week2/code
+  Exit code: 0
+  Runtime (s): 0.01
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+Latin name: Passerculus sandwichensis  Common name: Savannah sparrow  Mass: 18.7
+Latin name: Delichon urbica  Common name: House martin  Mass: 19
+Latin name: Junco phaeonotus  Common name: Yellow-eyed junco  Mass: 19.5
+Latin name: Junco hyemalis  Common name: Dark-eyed junco  Mass: 19.6
+Latin name: Tachycineata bicolor  Common name: Tree swallow  Mass: 20.2
+
+**********
+No errors.
+======================================================================
+Script: Florida.R
+
+Contents:
+
+**********
+set.seed(1)
+
+# 1.
+cand_paths <- c("data/KeyWestAnnualMeanTemperature.RData",
+                "../data/KeyWestAnnualMeanTemperature.RData")
+data_path <- cand_paths[file.exists(cand_paths)][1]
+if (is.na(data_path)) stop("can`t find the file")
+
+# 2. output dir（results/figs）
+out_root <- if (dir.exists("results")) "results" else "../results"
+fig_dir  <- file.path(out_root, "figs")
+dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
+
+# 3.
+load(data_path)
+class(ats); head(ats)
+
+# 4.Scatter plot
+png(file.path(fig_dir, "scatter_year_temp.png"), width = 900, height = 650)
+plot(ats$Year, ats$Temp,
+     xlab = "Year", ylab = "Temp (°C)",
+     main = "Key West annual mean temperature")
+dev.off()
+
+# 5.correlation
+r_obs <- cor(ats$Year, ats$Temp)
+r_obs
+
+# 6.Displacement test
+B <- 10000
+rand_r <- numeric(B)
+for (i in 1:B) rand_r[i] <- cor(ats$Year, sample(ats$Temp))
+
+# 7.One-sided p-value
+p_val <- mean(rand_r >= r_obs)
+p_val
+
+# 8.
+png(file.path(fig_dir, "permutation_correlations.png"), width = 900, height = 650)
+hist(rand_r, breaks = 50,
+     main = "Permutation distribution of r",
+     xlab = "Correlation (Year vs. shuffled Temp)")
+abline(v = r_obs, col = "red", lwd = 2)
+legend("topleft",
+       legend = paste0("Observed r = ", round(r_obs, 3),
+                       "\nOne-sided p = ", signif(p_val, 3)),
+       bty = "n")
+dev.off()
+
+cat("\nObserved r =", round(r_obs, 3),
+    "| One-sided permutation p =", signif(p_val, 3), "\n")
+if (p_val < 0.05 && r_obs > 0) {
+  cat("Conclusion: key west is on warmer。\n")
+} else {
+  cat("Conclusion: No upward trend。\n")
+}
+
+vals_tex <- file.path(out_root, "values.tex")
+cat(sprintf("\\newcommand{\\robserved}{%.3f}\n\\newcommand{\\pvalue}{%.3g}\n",
+            r_obs, p_val),
+    file = vals_tex)
+**********
+
+Run metadata:
+  Command: cd "week4/code" && Rscript --vanilla --slave Florida.R
+  CWD: week4/code
+  Exit code: 0
+  Runtime (s): 0.46
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+[1] "data.frame"
+  Year     Temp
+1 1901 23.75000
+2 1902 24.66667
+3 1903 24.71667
+4 1904 24.51667
+5 1905 24.88333
+6 1906 24.63333
+null device 
+          1 
+[1] 0.5331784
+[1] 0
+null device 
+          1 
+
+Observed r = 0.533 | One-sided permutation p = 0 
+Conclusion: key west is on warmer。
+
+**********
+No errors.
+======================================================================
+Script: PP_Regress.R
+
+Contents:
+
+**********
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+})
+
+infile  <- file.path("..", "data", "EcolArchives-E089-51-D1.csv")
+out_pdf <- file.path("..", "results", "PP_Regress.pdf")
+out_csv <- file.path("..", "results", "PP_Regress_Results.csv")
+
+if (!dir.exists(file.path("..", "results"))) dir.create(file.path("..", "results"), recursive = TRUE)
+
+d <- read.csv(infile, stringsAsFactors = FALSE)
+
+dat <- d %>%
+  mutate(
+    # Standardize units: mg -> g
+    Prey.mass.g = ifelse(Prey.mass.unit == "mg", Prey.mass / 1000, Prey.mass),
+    Feeding.type = Type.of.feeding.interaction,
+    Lifestage    = gsub("\\s*/\\s*", "/", Predator.lifestage)  # 去掉“larva / juvenile”中的空格，便于图例整洁
+  ) %>%
+  select(Feeding.type, Lifestage, Predator.mass, Prey.mass.g) %>%
+  filter(!is.na(Feeding.type), !is.na(Lifestage),
+         !is.na(Predator.mass), !is.na(Prey.mass.g)) %>%
+  mutate(
+    logPred = log10(Predator.mass),
+    logPrey = log10(Prey.mass.g),
+    Feeding.type = factor(
+      Feeding.type,
+      levels = c("insectivorous", "piscivorous", "planktivorous", "predacious", "predacious/piscivorous")
+    )
+  )
+
+# Draw and write to PDF
+p <- ggplot(dat, aes(x = Prey.mass.g, y = Predator.mass,
+                     colour = Lifestage, fill = Lifestage)) +
+  geom_point(alpha = 0.5, size = 1) +
+  geom_smooth(method = "lm", se = TRUE, size = 0.6) +
+  scale_x_log10() +
+  scale_y_log10() +
+  facet_grid(Feeding.type ~ .) +
+  labs(x = "Prey Mass in grams", y = "Predator mass in grams") +
+  theme_bw(base_size = 11) +
+  theme(legend.position = "bottom",
+        strip.background = element_rect(colour = NA, fill = "grey90"))
+
+pdf(out_pdf, width = 7, height = 10)
+print(p) 
+dev.off()
+
+## Model： log10(Predator.mass) ~ log10(Prey.mass.g)
+regress_results <- dat %>%
+  group_by(Feeding.type, Lifestage) %>%
+  do({
+    dd <- .
+    n  <- nrow(dd)
+
+    # If there are too few data points (<3) or the independent variable has insufficient values ​​(<2 distinct x), then NA is given.
+    if (n < 3 || dplyr::n_distinct(dd$logPrey) < 2) {
+      data.frame(n = n, intercept = NA_real_, slope = NA_real_,
+                 r.squared = NA_real_, f.statistic = NA_real_,
+                 df1 = NA_integer_, df2 = NA_integer_, p.value = NA_real_)
+    } else {
+      fit <- lm(logPred ~ logPrey, data = dd)
+      s   <- summary(fit)
+      f   <- unname(s$fstatistic)
+      pv  <- if (length(f) == 3) pf(f[1], f[2], f[3], lower.tail = FALSE) else NA_real_
+      co  <- coef(s)
+
+      data.frame(
+        n          = n,
+        intercept  = unname(co["(Intercept)", "Estimate"]),
+        slope      = unname(co["logPrey"   , "Estimate"]),
+        r.squared  = unname(s$r.squared),
+        f.statistic= if (length(f) >= 1) f[1] else NA_real_,
+        df1        = if (length(f) >= 2) f[2] else NA_integer_,
+        df2        = if (length(f) >= 3) f[3] else NA_integer_,
+        p.value    = pv
+      )
+    }
+  }) %>%
+  arrange(Feeding.type, Lifestage)
+
+write.csv(regress_results, out_csv, row.names = FALSE)
+
+cat("\nDone.\n",
+    "Figure  : ", out_pdf, "\n",
+    "Results : ", out_csv, "\n", sep = "")
+
+**********
+
+Run metadata:
+  Command: cd "week4/code" && Rscript --vanilla --slave PP_Regress.R
+  CWD: week4/code
+  Exit code: 0
+  Runtime (s): 2.08
+  Timed out: No
+  Stderr bytes: 303
+
+Stdout (first 500 chars):
+
+**********
+null device 
+          1 
+
+Done.
+Figure  : ../results/PP_Regress.pdf
+Results : ../results/PP_Regress_Results.csv
+
+**********
+Warnings/Notes:
+**********
+Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead. 
+`geom_smooth()` using formula = 'y ~ x'
+Warning messages:
+1: In qt((1 - level)/2, df) : NaNs produced
+2: In max(ids, na.rm = TRUE) :
+  no non-missing arguments to max; returning -Inf
+
+**********
+======================================================================
+Script: TreeHeight.R
+
+Contents:
+
+**********
+#!/usr/bin/env Rscript
+# TreeHeight.R
+
+data_path   <- "../data/trees.csv"
+output_path <- "../results/TreeHts.csv"
+
+df <- read.csv(data_path, stringsAsFactors = FALSE, check.names = FALSE)
+
+# Calculation: Height = Distance * tan(Angle (degrees) * pi / 180)
+df$Tree_Height_m <- df$`Distance.m` * tan(df$`Angle.degrees` * pi / 180)
+
+write.csv(df, output_path, row.names = FALSE)
+**********
+
+Run metadata:
+  Command: cd "week4/code" && Rscript --vanilla --slave TreeHeight.R
+  CWD: week4/code
+  Exit code: 0
+  Runtime (s): 0.11
+  Timed out: No
+  Stderr bytes: 0
+
+Stdout (first 500 chars):
+
+**********
+
+**********
+No errors.
+======================================================================
+FUNCTIONAL CORRECTNESS (Criterion 2)
+======================================================================
+
+Scripts executed: 28
+Scripts successful: 23
+Scripts with errors: 5
+Success rate: 82.1%
+
+Expected outputs check:
+  Expected: 1
+  Found: 0
+  Missing: 1
+  Note: Missing expected files are treated as incomplete outputs.
+
+Scripts that error on a clean run are treated as non-runnable under Criterion 2.
+
+Criterion evidence snapshot:
+  Criterion 2:
+  - Scripts executed: 28
+  - Scripts with errors: 5
+  - Missing expected outputs: 1
+
+
+======================================================================
+FEEDBACK SUMMARY
+======================================================================
+
+Scripts tested: 34
+Scripts successful: 28
+Scripts with errors: 6
+Missing expected outputs: 14
+Warnings/Notes: 41
+
+Groupwork evidence (Criteria 6-7): collected (group repo URL provided)
+
+IMPORTANT DEBUGGING GUIDANCE:
+------------------------------
+
+Please review all warnings and errors, and your directory structure based on the above log.
+
+Read every warning/error above and reproduce failures locally.
+
+Then ask yourself: Why did I not get these warnings or errors on my machine when I tested my code?
+
+Most common causes:
+
+• File paths: Your local machine may have different directory structures
+• Dependencies: Missing packages or different versions
+• File permissions: Scripts may not be executable on the testing server
+• Case sensitivity: Linux systems are case-sensitive (your laptop may not be)
+• Working directory: Scripts may assume they run from a specific location
+• Input files: Required data files may be missing or in wrong locations
+
+Debugging steps:
+1. Test your code in a clean environment (fresh directory)
+2. Check all file paths are relative and correct
+3. Verify all required files are present and properly named
+4. Test on a case-sensitive system if possible
+5. Run your scripts from different directories to check robustness
+
+**Fix these issues and test again. Good debugging skills are essential for scientific computing!**
+
