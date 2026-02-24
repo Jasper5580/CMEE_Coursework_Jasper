@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Bootcamp_Assessment_YianLiu_yl14225</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Bootcamp_Assessment_YianLiu_yl14225</h1>
+</header>
+<h1 id="bootcamp-assessment-yian-liu">Bootcamp Assessment: Yian Liu</h1>
+<hr />
+<h2 id="execution-results">Execution results</h2>
+<ul>
+<li>Script execution evidence is taken from per-script run metadata in
+the LOG.</li>
+<li>Notable outcomes:
+<ul>
+<li><code>TAutoCorr.R</code>: <strong>Exit code 0</strong> (validated
+run)</li>
+<li>Failures observed (Exit code 1): <code>compileLaTeX.sh</code>,
+<code>csvtospace.sh</code>, <code>tabtocsv.sh</code>,
+<code>basic_io1.py</code>, <code>basic_io2.py</code>,
+<code>basic_io3.py</code>
+<hr />
+<hr />
+<h2 id="script-specific-feedback">Script-Specific Feedback</h2>
+<hr />
+<blockquote>
+Representative scripts chosen to cover: strong examples, assigned
+scripts, execution issues, and common style/robustness problems.
+<hr />
+<h3 id="tautocorr.r">TAutoCorr.R</h3>
+<hr />
+<strong>Status:</strong> Present — ran successfully (Exit code 0)
+<hr />
+<p><strong>Evidence (from LOG):</strong></p>
+</blockquote></li>
+</ul></li>
+<li>Exit code: 0</li>
+<li>Runtime (s): 0.46</li>
+<li>Stderr bytes: 98</li>
+<li>Tool warnings / notes:
+<ul>
+<li>here() starts at
+/home/mhasoba/Documents/Teaching/MulQuaBio/MQB-TA/repos_groups/04_Dashing_Dingos</li>
+</ul></li>
+<li>Stdout snippet: Observed correlation between successive years: 0.326
+Approximate permutation p-value (one-sided): 5e-04 Conclusion: At the
+0.05 level, successive years’ temperatures appear to be significantly
+posit…
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)</li>
+<li>Criterion 10 (reporting/outputs)</li>
+<li>Criterion 11 (progression)
+<hr />
+<hr /></li>
+<li>Clear implementation of successive-year correlation + permutation
+test; produces text + histogram output; see dedicated TAutoCorr
+evaluation below.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Add a short header comment: purpose, inputs, outputs, and example
+command.
+<hr />
+<h3 id="compilelatex.sh">compileLaTeX.sh</h3>
+<hr />
+<strong>Status:</strong> Present — present but not validated (Exit code
+1)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 1</li>
+<li>Runtime (s): 0.00</li>
+<li>Stderr bytes: 0</li>
+<li>Stdout snippet: Error: File firstExample.tex not found…
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script is <strong>present</strong> but did not execute cleanly in
+the automated run.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Ensure the script can find the <code>.tex</code> source using
+relative paths and that <code>pdflatex</code> (and any bib tools) are
+called in a reproducible way; print a clear error if LaTeX is missing.
+<hr />
+<h3 id="csvtospace.sh">csvtospace.sh</h3>
+<hr />
+<strong>Status:</strong> Present — present but not validated (Exit code
+1)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 1</li>
+<li>Runtime (s): 0.00</li>
+<li>Stderr bytes: 0</li>
+<li>Stdout snippet: bash csvtospace.sh…
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script is <strong>present</strong> but did not execute cleanly in
+the automated run.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Ensure scripts accept input filename arguments and write outputs to
+the expected pattern (LOG expected <code>*_space.txt</code>); add
+<code>set -euo pipefail</code> and usage text.
+<hr />
+<h3 id="tabtocsv.sh">tabtocsv.sh</h3>
+<hr />
+<strong>Status:</strong> Present — present but not validated (Exit code
+1)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 1</li>
+<li>Runtime (s): 0.00</li>
+<li>Stderr bytes: 0</li>
+<li>Stdout snippet: bash csvtospace.sh…
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script is <strong>present</strong> but did not execute cleanly in
+the automated run.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Ensure scripts accept input filename arguments and write outputs to
+the expected pattern (LOG expected <code>*_space.txt</code>); add
+<code>set -euo pipefail</code> and usage text.
+<hr />
+<h3 id="basic_io1.py">basic_io1.py</h3>
+<hr />
+<strong>Status:</strong> Present — present but not validated (Exit code
+1)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 1</li>
+<li>Runtime (s): 0.01</li>
+<li>Stderr bytes: 329
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script is <strong>present</strong> but did not execute cleanly in
+the automated run.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Add argument checking (<code>sys.argv</code> length), clear usage
+message, and guard missing/invalid input files to reduce Exit code
+failures.
+<hr />
+<h3 id="basic_io2.py">basic_io2.py</h3>
+<hr />
+<strong>Status:</strong> Present — present but not validated (Exit code
+1)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 1</li>
+<li>Runtime (s): 0.01</li>
+<li>Stderr bytes: 328
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script is <strong>present</strong> but did not execute cleanly in
+the automated run.
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Add argument checking (<code>sys.argv</code> length), clear usage
+message, and guard missing/invalid input files to reduce Exit code
+failures.
+<hr />
+<h3 id="align_seqs_better.py">align_seqs_better.py</h3>
+<hr />
+<strong>Status:</strong> Present — ran successfully (Exit code 0)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 0</li>
+<li>Runtime (s): 0.98</li>
+<li>Stderr bytes: 0</li>
+<li>Stdout snippet: === Alignment summary === Best score: 545 Alignment
+(matches=’*‘, leading’.’ shows the offset): Alignment #1 Start position:
+76 ………………………………………………………………
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script ran in the automated environment; treat as validated for
+Criterion 2 (within scope of what the LOG tested).
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Add a short header comment: purpose, inputs, outputs, and example
+command.
+<hr />
+<h3 id="pp_regress.r">PP_Regress.R</h3>
+<hr />
+<strong>Status:</strong> Present — ran successfully (Exit code 0)
+<hr />
+<strong>Evidence (from LOG):</strong></li>
+<li>Exit code: 0</li>
+<li>Runtime (s): 1.77</li>
+<li>Stderr bytes: 303</li>
+<li>Tool warnings / notes:
+<ul>
+<li>Warning message: Using <code>size</code> aesthetic for lines was
+deprecated in ggplot2 3.4.0. ℹ Please use <code>linewidth</code>
+instead. <code>geom_smooth()</code> using formula = ‘y ~ x’ Warning
+messages: 1: In qt((1 - level)/2, df) : NaNs produced 2: In max(ids,
+na.rm = TRUE) : no non-missing arguments to max; returning -Inf</li>
+</ul></li>
+<li>Stdout snippet: null device 1 Done. Figure :
+../results/PP_Regress.pdf Results : ../results/PP_Regress_Results.csv…
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2 (functional correctness)</li>
+<li>Criterion 3 (style/structure)</li>
+<li>Criterion 8 (robustness)</li>
+<li>Criterion 9 (problem-solving)
+<hr />
+<hr /></li>
+<li>Script ran in the automated environment; treat as validated for
+Criterion 2 (within scope of what the LOG tested).
+<hr />
+<strong>Improvement suggestion:</strong></li>
+<li>Address style warnings (prefer <code>&lt;-</code> assignment), add
+comments for model specification and assumptions, and ensure input paths
+are portable.
+<hr />
+<hr />
+<h2 id="detailed-evaluation-tautocorr.r">Detailed Evaluation:
+TAutoCorr.R</h2>
+<hr />
+<h3 id="a.-specification-alignment">A. Specification alignment</h3>
+<hr /></li>
+<li>Loads <code>KeyWestAnnualMeanTemperature.RData</code> and extracts
+<code>temps &lt;- dat$Temp</code>.</li>
+<li>Observed correlation:
+<code>obs_cor &lt;- cor(temps[-length(temps)], temps[-1])</code>.</li>
+<li>Permutation loop (<code>n_perm &lt;- 10000</code>) with
+<code>perm_temps &lt;- sample(temps)</code> then successive-year
+<code>cor(...)</code> stored.</li>
+<li>P-value:
+<code>p_value &lt;- mean(perm_cor &gt;= obs_cor)</code>.</li>
+<li>Writes results text + saves histogram PNG under
+<code>groupwork2/results/</code>.
+<hr />
+<h3 id="b.-conceptual-understanding-of-autocorrelation">B. Conceptual
+understanding of autocorrelation</h3></li>
+<li>The code correctly targets <em>lag-1</em> (successive-year)
+correlation by pairing <code>t</code> with <code>t+1</code> using
+shifted vectors.</li>
+<li>Permutation approach correctly breaks temporal structure to generate
+a null distribution for the lag-1 correlation.</li>
+<li>Reported conclusion is framed as a one-sided test
+(<code>perm_cor &gt;= obs_cor</code>), consistent with “positively
+correlated” wording.
+<hr />
+<h3 id="c.-algorithmic-implementation-depth">C. Algorithmic
+implementation depth</h3></li>
+<li>Uses vector slicing for pair construction (simple and correct).</li>
+<li>Uses explicit loop for permutations (clear, bootcamp-appropriate;
+vectorisation not required).</li>
+<li>Histogram output is a useful diagnostic (optional output in spec).
+<hr />
+<h3 id="d.-statistical-computational-rigor">D. Statistical &amp;
+computational rigor</h3></li>
+<li>Uses <code>cor()</code> (as required) and avoids
+<code>cor.test()</code> for the final p-value.</li>
+<li>P-value is computed as an empirical tail probability from the
+permutation distribution.</li>
+<li>Consider documenting whether a two-sided alternative is desired;
+current implementation is explicitly one-sided.
+<hr />
+<h3 id="e.-error-handling-robustness">E. Error handling &amp;
+robustness</h3></li>
+<li>Includes a package guard for <code>here</code> and uses relative
+project paths via <code>here::here()</code>.</li>
+<li>Would benefit from explicit checks that the loaded object has a
+<code>Temp</code> column and that <code>length(temps) &gt;= 2</code>.
+<hr />
+<h3 id="f.-comparison-with-example-solution">F. Comparison with example
+solution</h3>
+<hr /></li>
+<li><strong>Similarities:</strong> both load
+<code>KeyWestAnnualMeanTemperature.RData</code>, compute lag-1
+correlation, generate permutation distribution, and compare observed
+value against that distribution.</li>
+<li><strong>Key omissions vs example:</strong> the example solution
+structures logic in a function
+(<code>autocor_test &lt;- function(data){...}</code>); the submitted
+script is more linear (still acceptable).</li>
+<li><strong>Conceptual gaps:</strong> none visible for the main
+statistical task.</li>
+<li><strong>Improvements beyond example (if any):</strong> writes a
+plain-text results file and saves a null distribution histogram image
+for reporting.
+<hr />
+<h3 id="g.-required-script-level-reporting-block">G. Required
+Script-Level Reporting Block</h3>
+<hr />
+<h4 id="tautocorr.r-1">TAutoCorr.R</h4>
+<hr />
+<strong>Specification alignment:</strong> Matches core requirements
+(successive-year <code>cor()</code> + permutation p-value).
+<hr />
+<strong>Algorithmic evaluation:</strong> Correct lag-1 pairing via
+vector slicing; clear permutation loop (10,000 iterations).
+<hr />
+<strong>Conceptual understanding:</strong> Correctly operationalises
+“successive years” and uses permutation to test against a null that
+removes temporal structure.
+<hr />
+<strong>Statistical correctness:</strong> Empirical p-value computed
+from permutation distribution; avoids <code>cor.test()</code> p-value.
+<hr />
+<strong>Rubric relevance:</strong></li>
+<li>Criterion 2</li>
+<li>Criterion 3</li>
+<li>Criterion 8</li>
+<li>Criterion 9</li>
+<li>Criterion 10</li>
+<li>Criterion 11
+<hr /></li>
+<li>Strong evidence of understanding + implementation of the intended
+time-series correlation question.
+<hr />
+<h2 id="overall-feedback">Overall feedback</h2>
+<hr /></li>
+<li><strong>Repository organisation (C1):</strong> You’ve got a clear
+week-based structure, but try to keep <code>results/</code> empty (or
+generated) and avoid committing history/temporary files (LOG flags
+<code>.Rhistory</code>, <code>__pycache__</code>, etc.).</li>
+<li><strong>Functional correctness (C2):</strong> Many scripts run
+cleanly, and <code>TAutoCorr.R</code> is a strong success. Focus next on
+the small set of scripts failing with Exit code 1—add usage/argument
+checks and make file paths portable.</li>
+<li><strong>Code style (C3):</strong> Python appears mostly clean (18/19
+clean in LOG). R style warnings are largely mechanical (e.g.,
+<code>&lt;-</code> vs <code>=</code>) and easy wins.</li>
+<li><strong>Documentation (C4):</strong> Per-week READMEs are a good
+habit. Improve the root README into a quick “how to run / what’s where”
+guide with a couple of example commands.</li>
+<li><strong>Git practice (C5):</strong> Commit messages look meaningful
+(no generic messages flagged). Consider using feature/topic branches for
+personal work when experimenting, and keep generated files out of
+version control.</li>
+<li><strong>Error handling (C8):</strong> Several scripts are flagged as
+not handling missing files gracefully; even simple guards + clear error
+messages will lift this quickly.
+<hr />
+<h2 id="priority-fixes">Priority fixes</h2></li>
+</ul>
+<ol type="1">
+<li>Add/expand root <code>README.md</code> with repository map + 3–5
+example commands.</li>
+<li>Fix the small set of failing scripts (Exit code 1): add argument
+validation + relative paths; ensure expected outputs are produced (e.g.,
+<code>*_space.txt</code>).</li>
+<li>Clean repo hygiene: remove committed <code>__pycache__</code>,
+<code>.Rhistory</code>, and other generated outputs; tighten
+<code>.gitignore</code>.</li>
+<li>For groupwork: add <code>CONTRIBUTIONS.md</code> and (where
+practical) use feature branches / PR merges rather than direct commits
+to main.
+<hr />
+<hr />
+<h2 id="summary">Summary</h2>
+<hr />
+Good job - Overall submission shows broad engagement, with a few
+execution and reporting gaps that are straightforward to improve.
+Groupwork contribution evidence is present but structurally light (few
+commits; no <code>CONTRIBUTIONS.md</code>). Some clear scope for
+improvement - see specific suggestions above.<br />
+
+<hr />
+<h2 id="mark-classification">Mark classification</h2>
+<hr />
+<!-- Total Mark: 68/100   -->
+Classification: Merit</li>
+</ol>
+</body>
+</html>
