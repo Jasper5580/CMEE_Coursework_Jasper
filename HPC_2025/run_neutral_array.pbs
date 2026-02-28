@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N neutral_array
+#PBS -l walltime=12:00:00
+#PBS -l select=1:ncpus=1:mem=4gb
+#PBS -V
+#PBS -o log/
+#PBS -e log/
+
+cd "$PBS_O_WORKDIR" || exit 1
+mkdir -p log
+
+module purge
+module load tools/prod
+module load R/4.2.2-foss-2022b
+
+Rscript code/Yian.Liu_HPC_2025_neutral_cluster.R

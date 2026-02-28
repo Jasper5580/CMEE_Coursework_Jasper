@@ -1,0 +1,3 @@
+/usr/bin/which: no R in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/pbs/bin:/opt/pbs/bin)
+/usr/bin/which: no Rscript in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/pbs/bin:/opt/pbs/bin)
+/var/spool/pbs/mom_priv/jobs/1792042[3].pbs-7.SC: line 30: R: command not found

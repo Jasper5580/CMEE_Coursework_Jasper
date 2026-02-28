@@ -1,0 +1,16 @@
+=== Job started on: cx3-1-6 ===
+=== Workdir: /rds/general/user/yl14225/home/HPC_2025 ===
+=== PBS_ARRAY_INDEX: 3 ===
+=== which R ===
+R not found
+=== which Rscript ===
+Rscript not found
+
+====================================
+CPU Time used: 00:00:00
+CPU Percent: 0%
+Memory usage: 21936kb
+Approx Power usage: 0.0
+Walltime usage: 00:00:48
+
+====================================

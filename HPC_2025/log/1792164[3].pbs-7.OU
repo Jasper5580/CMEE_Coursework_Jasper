@@ -1,0 +1,19 @@
+=== Job started on: cx3-1-5 ===
+=== Workdir: /rds/general/user/yl14225/home/HPC_2025 ===
+=== PBS_ARRAY_INDEX: 3 ===
+=== PATH: /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/pbs/bin:/opt/pbs/bin ===
+=== module avail (filtered) ===
+    rstudioapi                                    (E)
+=== which R ===
+R not found
+=== R --version ===
+ERROR: R not available on compute node. You must load the correct R module (or use conda).
+
+====================================
+CPU Time used: 00:00:18
+CPU Percent: 23%
+Memory usage: 103536kb
+Approx Power usage: 0.0
+Walltime usage: 00:02:26
+
+====================================
