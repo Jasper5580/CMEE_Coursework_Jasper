@@ -1,0 +1,5 @@
+reason,curve_num,best_model_AIC,deltaAIC_2nd,PopBio_units,Temp,Species,Medium,has_decline,has_nonpositive,n_points,n_unique_time
+Logistic strong win (clean S-shape candidate),133,logistic,119.2100490250342,OD_595,35,Klebsiella.pneumonia,TSB,FALSE,FALSE,18,18
+Logistic borderline (uncertainty case),144,logistic,0.0018689157072913076,N,4,Lactobacillus sakei,MRS broth,FALSE,FALSE,9,9
+Cubic strong win (decline/death phase case),104,cubic,50.5995367010034,OD_595,15,Dickeya.zeae..RDA.R.,TSB,TRUE,FALSE,23,23
+Quadratic borderline (simple/limited-data case),281,quadratic,0.03675329821834339,N,25,Tetraselmis tetrahele,ESAW,TRUE,FALSE,13,13

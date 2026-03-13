@@ -1,0 +1,4 @@
+best_model_BIC,n_curves,prop
+logistic,188,0.6163934426229508
+cubic,80,0.26229508196721313
+quadratic,37,0.12131147540983607

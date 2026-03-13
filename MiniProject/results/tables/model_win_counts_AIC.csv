@@ -1,0 +1,4 @@
+best_model_AIC,n_curves,prop
+logistic,185,0.6065573770491803
+cubic,85,0.2786885245901639
+quadratic,35,0.11475409836065574

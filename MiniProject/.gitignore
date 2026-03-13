@@ -1,0 +1,46 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.Rproj.user/
+*.swp
+*.swo
+*~
+
+# R session/history
+.Rhistory
+.RData
+.Ruserdata
+
+# renv local library/cache
+renv/library/
+renv/staging/
+
+# LaTeX intermediate files in report/
+report/*.aux
+report/*.bbl
+report/*.bcf
+report/*.blg
+report/*.fdb_latexmk
+report/*.fls
+report/*.lof
+report/*.log
+report/*.lot
+report/*.out
+report/*.run.xml
+report/*.synctex.gz
+report/*.toc
+report/*.nav
+report/*.snm
+report/*.vrb
+
+# word count temporary file
+report/wordcount.txt
+
+# Optional: temporary PDFs only if you do NOT want to track drafts
+# report/main.pdf
+
+# Shell / temp output
+*.tmp
+*.temp
